@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Link, Loader2 } from "lucide-react";
-import {Turnstile} from "@marsidev/react-turnstile";
+import { Turnstile } from "@marsidev/react-turnstile";
 
 type FormData = {
   email: string;
@@ -172,7 +172,16 @@ export default function ProductForm() {
         </div>
       </div>
 
-      <Turnstile siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "" } onSuccess={(token: string) => setTurnstileToken(token)} onError={() => setTurnstileToken(null)} onExpire={() => setTurnstileToken(null)} theme="light" />
+      <Turnstile
+        siteKey={
+          process.env.NODE_ENV === "development"
+            ? "1x00000000000000000000AA"
+            : "0x4AAAAAAAIdSlK2oYYsGQpg"
+        }
+        onSuccess={(token: string) => setTurnstileToken(token)}
+        onError={() => setTurnstileToken(null)}
+        onExpire={() => setTurnstileToken(null)}
+      />
 
       <Button type="submit" className="w-full" disabled={isSubmitting}>
         {isSubmitting ? "Processing..." : "Buy"}
