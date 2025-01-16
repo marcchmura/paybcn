@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import Link from "next/link";
 
 const timeline = [
@@ -40,13 +39,13 @@ export default function referral() {
             <p className="mt-2 text-sm/6 text-muted-foreground">The market has seen tremendous growth, reaching over $2 trillion in total value.</p>
           </div>
         </div>
-        <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-foreground p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start">
+        <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-foreground dark:bg-muted p-8 sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-sm lg:flex-auto lg:flex-col lg:items-start">
           <p className="flex-none text-2xl font-bold text-white">$+100,000</p>
           <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
             <p className="text-sm/6 text-white">Bitcoin ATH</p>
           </div>
         </div>
-        <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-primary p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
+        <div className="flex flex-col-reverse justify-between gap-x-16 gap-y-8 rounded-2xl bg-primary dark:bg-muted p-8 sm:w-11/12 sm:max-w-xl sm:flex-row-reverse sm:items-end lg:w-full lg:max-w-none lg:flex-auto lg:flex-col lg:items-start lg:gap-y-28">
           <p className="flex-none text-2xl font-bold text-white">$7.1 Billion</p>
           <div className="sm:w-80 sm:shrink lg:w-auto lg:flex-none">
             <p className="text-lg text-white">Bitcoin&apos;s daily transaction volume.</p>
@@ -87,10 +86,7 @@ export default function referral() {
           </div>
         ))}
       </div>
-      <h4 className="text-lg">IV. Open Source Repository</h4>
-      <div className="w-full">
-        <Image src={"/whitepaper.png"} alt="whitepaper-illustration" className="rounded-lg" />
-      </div>
+
       <p className="text-sm/6">We&apos;re a Singapore-based team of five, supported by a community of independent developers who actively contribute to Paybcn&apos;s growth on GitHub.</p>
       <Link href={"/"}>
         <Button>Open on GitHub</Button>

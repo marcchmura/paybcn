@@ -1,9 +1,10 @@
-'use client'
+"use client";
 import React, { useState, FormEvent, useEffect, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Link, Loader2 } from "lucide-react";
+import {Turnstile} from "@marsidev/react-turnstile";
 
 type FormData = {
   email: string;
@@ -11,6 +12,7 @@ type FormData = {
   url: string;
   title: string;
   currency: string;
+  turnstileToken: string;
 };
 
 type ApiResponse = {
@@ -28,6 +30,7 @@ export default function ProductForm() {
   const [titleForm, setTitleForm] = useState("");
   const [price, setPrice] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -43,8 +46,8 @@ export default function ProductForm() {
     const email = formElements.email.value;
     const link = formElements.link.value;
 
-    if (!email || !price || !link || !titleForm || !currency) {
-      setErrors({ form: "Please fill in all fields" });
+    if (!email || !price || !link || !titleForm || !currency || !turnstileToken) {
+      setErrors({ form: "Please fill in all fields, including verification." });
       return;
     }
 
@@ -56,8 +59,8 @@ export default function ProductForm() {
       url: link,
       title: titleForm,
       currency,
+      turnstileToken,
     };
-    console.log(payload);
 
     try {
       const response = await fetch("/api/checkout", {
@@ -93,7 +96,6 @@ export default function ProductForm() {
     }
   };
 
-  // Memoizing handleSearch using useCallback
   const handleSearch = useCallback(async () => {
     setLoading(true);
     try {
@@ -121,6 +123,7 @@ export default function ProductForm() {
       handleSearch();
     }
   }, [query, handleSearch]);
+  console.log("Turnstile Site Key:", process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY);
 
   return (
     <form onSubmit={handleSubmit} className="w-full space-y-3">
@@ -128,20 +131,8 @@ export default function ProductForm() {
 
       <div className="space-y-1">
         <div className="relative w-full h-full overflow-visible">
-          {loading ? (
-            <Loader2 className="animate-spin pointer-events-none absolute top-4 right-4 inset-y-0 h-4 w-4 text-muted-foreground" />
-          ) : (
-            <Link strokeWidth={2} className="pointer-events-none absolute top-4 right-4 inset-y-0 h-4 w-4 text-muted-foreground" aria-hidden="true" />
-          )}
-          <Input
-            name="link"
-            type="url"
-            placeholder="Product link"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            required
-            className={`pr-10 ${errors.link ? "border-red-500" : ""}`}
-          />
+          {loading ? <Loader2 className="animate-spin pointer-events-none absolute top-4 right-4 inset-y-0 h-4 w-4 text-muted-foreground" /> : <Link strokeWidth={2} className="pointer-events-none absolute top-4 right-4 inset-y-0 h-4 w-4 text-muted-foreground" aria-hidden="true" />}
+          <Input name="link" type="url" placeholder="Product link" value={query} onChange={(event) => setQuery(event.target.value)} required className={`pr-10 ${errors.link ? "border-red-500" : ""}`} />
         </div>
         {errors.link && <div className="text-red-500 text-sm">{errors.link}</div>}
       </div>
@@ -152,31 +143,13 @@ export default function ProductForm() {
       </div>
 
       <div className="space-y-1">
-        <Input
-          name="title"
-          type="text"
-          placeholder="Product title"
-          value={titleForm}
-          onChange={(event) => setTitleForm(event.target.value)}
-          required
-          className={errors.title ? "border-red-500" : ""}
-        />
+        <Input name="title" type="text" placeholder="Product title" value={titleForm} onChange={(event) => setTitleForm(event.target.value)} required className={errors.title ? "border-red-500" : ""} />
         {errors.title && <div className="text-red-500 text-sm">{errors.title}</div>}
       </div>
 
       <div className="flex space-x-2">
         <div className="flex-1 space-y-1">
-          <Input
-            name="price"
-            type="number"
-            placeholder="Product price"
-            value={price}
-            onChange={(event) => setPrice(event.target.value)}
-            min="0.01"
-            step="0.01"
-            required
-            className={errors.price ? "border-red-500" : ""}
-          />
+          <Input name="price" type="number" placeholder="Product price" value={price} onChange={(event) => setPrice(event.target.value)} min="0.01" step="0.01" required className={errors.price ? "border-red-500" : ""} />
           {errors.price && <div className="text-red-500 text-sm">{errors.price}</div>}
         </div>
 
@@ -198,6 +171,8 @@ export default function ProductForm() {
           {errors.currency && <div className="text-red-500 text-sm">{errors.currency}</div>}
         </div>
       </div>
+
+      <Turnstile siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "" } onSuccess={(token: string) => setTurnstileToken(token)} onError={() => setTurnstileToken(null)} onExpire={() => setTurnstileToken(null)} theme="light" />
 
       <Button type="submit" className="w-full" disabled={isSubmitting}>
         {isSubmitting ? "Processing..." : "Buy"}
