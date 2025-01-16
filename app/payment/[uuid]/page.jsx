@@ -28,6 +28,7 @@ export default async function CheckoutPage({ params }) {
 
   const OrderData = await getOrderData(params.uuid);
 
+
   if (OrderData.payment === true) {
     redirect("/confirmation/" + OrderData.id);
   }
@@ -35,7 +36,7 @@ export default async function CheckoutPage({ params }) {
   const subtotal = Number(OrderData.price).toFixed(2);
   const transaction_fee = (OrderData.price * 0.3).toFixed(2);
   const total = (Number(subtotal) + Number(transaction_fee)).toFixed(2);
-
+  const uuid = params.uuid;
   return (
     <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12 flex items-start space-y-6 flex-col w-full sm:w-[400px]">
       <h3 className="text-xl tracking-tight text-pretty line-clamp-2 text-ellipsis overflow-hidden">{OrderData.title}</h3>
