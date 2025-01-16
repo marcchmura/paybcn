@@ -1,3 +1,4 @@
+/*
 import CheckoutForm from "@/components/forms/checkout-form";
 import { notFound, redirect } from "next/navigation";
 import { prisma } from "@/lib/db";
@@ -35,3 +36,4 @@ export default async function CheckoutPage({ params }) {
     </div>
   );
 }
+*/

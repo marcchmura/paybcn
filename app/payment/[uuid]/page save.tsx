@@ -1,3 +1,4 @@
+/*
 import { prisma } from "@/lib/db";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
@@ -98,3 +99,4 @@ export default async function CheckoutPage({ params }) {
     </div>
   );
 }
+*/
