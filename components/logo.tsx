@@ -1,6 +1,6 @@
 export default function logo() {
   return (
-    <svg className="h-8 fill-foreground" xmlns="http://www.w3.org/2000/svg" zoomAndPan="magnify" viewBox="0 0 824.88 299.999988" preserveAspectRatio="xMidYMid meet" version="1.0">
+    <svg className="h-8 fill-primary" xmlns="http://www.w3.org/2000/svg" zoomAndPan="magnify" viewBox="0 0 824.88 299.999988" preserveAspectRatio="xMidYMid meet" version="1.0">
       <defs>
         <g />
       </defs>

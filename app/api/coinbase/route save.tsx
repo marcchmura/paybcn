@@ -29,9 +29,11 @@ export async function POST(req: NextRequest) {
 
     // Update the order status in the database
     const order = await prisma.order.update({
-      where: { id: '29786348-3886-4efb-b67b-93562c6c4b5b' },
+      where: { id: payload.event.data.metadata.order_id },
       data: { payment: true },
     });
+
+    //get order details, except if i already have it from above
 
     //send an email to customer confirming its order, copying info@paybcn.com
     const client = new ServerClient(process.env.POSTMARK_API_TOKEN!);
