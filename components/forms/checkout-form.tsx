@@ -132,7 +132,7 @@ export default function CheckoutForm({ checkoutData }: CheckoutFormProps) {
         </SelectContent>
       </Select>
       <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Processing..." : "Buy"}
+        {isSubmitting ? "Processing..." : "Continue"}
       </Button>
     </form>
   );

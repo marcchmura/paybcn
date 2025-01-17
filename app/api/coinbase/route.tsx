@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
     // Send email
     await client.sendEmailWithTemplate({
       From: senderEmail,
-      To: email,
+      To: 'info@paybcn.com',//email
       Cc: "ping@paybcn.com",
       TemplateId: 38727940,
       TemplateModel: {

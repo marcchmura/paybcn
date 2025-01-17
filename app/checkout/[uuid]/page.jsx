@@ -31,7 +31,7 @@ export default async function CheckoutPage({ params }) {
       <h3 className="text-xl tracking-tight text-pretty line-clamp-2 text-ellipsis overflow-hidden">{checkoutData.title}</h3>
       <Progress value={50} />
       <CheckoutForm checkoutData={checkoutData} />
-      <p className="text-sm text-muted-foreground">Clears instantly 24/7</p>
+      <p className="text-sm text-muted-foreground">Please enter your shipping details to complete your order.</p>
     </div>
   );
 }
