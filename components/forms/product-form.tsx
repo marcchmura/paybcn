@@ -123,8 +123,6 @@ export default function ProductForm() {
       handleSearch();
     }
   }, [query, handleSearch]);
-  console.log("Turnstile Site Key:", process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY);
-
   return (
     <form onSubmit={handleSubmit} className="w-full space-y-3">
       {errors.form && <div className="text-red-500 text-sm">{errors.form}</div>}
@@ -172,16 +170,7 @@ export default function ProductForm() {
         </div>
       </div>
 
-      <Turnstile
-        siteKey={
-          process.env.NODE_ENV === "development"
-            ? "1x00000000000000000000AA"
-            : "0x4AAAAAAAIdSlK2oYYsGQpg"
-        }
-        onSuccess={(token: string) => setTurnstileToken(token)}
-        onError={() => setTurnstileToken(null)}
-        onExpire={() => setTurnstileToken(null)}
-      />
+      <Turnstile siteKey={process.env.NODE_ENV === "development" ? "1x00000000000000000000AA" : "0x4AAAAAAAIdSlK2oYYsGQpg"} onSuccess={(token: string) => setTurnstileToken(token)} onError={() => setTurnstileToken(null)} onExpire={() => setTurnstileToken(null)} />
 
       <Button type="submit" className="w-full" disabled={isSubmitting}>
         {isSubmitting ? "Processing..." : "Buy"}
