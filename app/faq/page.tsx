@@ -8,11 +8,11 @@ export default function AccordionDemo() {
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>What is Paybcn?</AccordionTrigger>
-          <AccordionContent>Paybcn is a shopping intermediary that helps you purchase products with crypto. You can create shopping wish lists by adding product links, and we'll handle the checkout process using your shipping credentials.</AccordionContent>
+          <AccordionContent>Paybcn is a shopping intermediary that helps you purchase products with crypto. You can create shopping wish lists by adding product links, and we&apos;ll handle the checkout process using your shipping credentials.</AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-2">
           <AccordionTrigger>What stores can I shop from?</AccordionTrigger>
-          <AccordionContent>You can add products from virtually any online store that supports standard shopping carts. Once we process your order, we’ll send it directly to the store for fulfillment using your shipping credentials.</AccordionContent>
+          <AccordionContent>You can add products from virtually any online store that supports standard shopping carts. Once we process your order, we&apos;ll send it directly to the store for fulfillment using your shipping credentials.</AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
           <AccordionTrigger>How secure is my payment and personal information?</AccordionTrigger>

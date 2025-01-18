@@ -42,11 +42,11 @@ export async function POST(req: NextRequest) {
       (() => {
         throw new Error("POSTMARK_SENDER_EMAIL is not defined in the environment variables");
       })();
-    const email =
+    /*const email =
       order.email ||
       (() => {
         throw new Error("POSTMARK_SENDER_EMAIL is not defined in the environment variables");
-      })();
+      })();*/
 
     // Send email
     await client.sendEmailWithTemplate({
