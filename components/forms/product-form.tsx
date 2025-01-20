@@ -173,7 +173,7 @@ export default function ProductForm() {
       <Turnstile siteKey={process.env.NODE_ENV === "development" ? "1x00000000000000000000AA" : "0x4AAAAAAAIdSlK2oYYsGQpg"} onSuccess={(token: string) => setTurnstileToken(token)} onError={() => setTurnstileToken(null)} onExpire={() => setTurnstileToken(null)} />
 
       <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Processing..." : "Buy"}
+        {isSubmitting ? <Loader2 className="animate-spin pointer-events-none h-5 w-5 text-muted-foreground" />  : "Buy"}
       </Button>
     </form>
   );

@@ -1,6 +1,6 @@
 "use client";
 import { Label } from "@/components/ui/label";
-
+import { Loader2 } from "lucide-react";
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -132,7 +132,7 @@ export default function CheckoutForm({ checkoutData }: CheckoutFormProps) {
         </SelectContent>
       </Select>
       <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? "Processing..." : "Continue"}
+        {isSubmitting ? <Loader2 className="animate-spin pointer-events-none h-5 w-5 text-muted-foreground" />  : "Continue"}
       </Button>
     </form>
   );
