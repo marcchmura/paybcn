@@ -1,14 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { prisma } from "@/lib/db";
-import { ServerClient } from "postmark";
+import nodemailer from "nodemailer";
 
-// Replace this with your actual shared secret in the environment variable
+// Replace with your OVH SMTP credentials
+const transporter = nodemailer.createTransport({
+  host: "ssl0.ovh.net",
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.OVH_EMAIL,
+    pass: process.env.OVH_PASSWORD,
+  },
+});
+
+// Your shared secret for webhook verification
 const SHARED_SECRET = process.env.x_cc_webhook_signature;
 
 export async function POST(req: NextRequest) {
   try {
-    const rawBody = await req.text(); // Get the raw body as text
+    const rawBody = await req.text();
     const signature = req.headers.get("X-CC-WEBHOOK-SIGNATURE");
 
     if (!signature) {
@@ -23,7 +34,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid signature" }, { status: 400 });
     }
 
-    // Parse the raw body (which is a JSON string) to JSON
+    // Parse the raw body to JSON
     const payload = JSON.parse(rawBody);
     console.log("Received Coinbase Commerce Payload:", payload);
 
@@ -33,37 +44,43 @@ export async function POST(req: NextRequest) {
       data: { payment: true },
     });
 
-    //get order details, except if i already have it from above
+    const senderEmail = process.env.OVH_EMAIL || 
+      (() => { throw new Error("OVH_EMAIL is not defined in the environment variables"); })();
+    
+    const recipientEmail = order.email || 
+      (() => { throw new Error("Order email is not defined"); })();
 
-    //send an email to customer confirming its order, copying info@paybcn.com
-    const client = new ServerClient(process.env.POSTMARK_API_TOKEN!);
-    const senderEmail =
-      process.env.POSTMARK_SENDER_EMAIL ||
-      (() => {
-        throw new Error("POSTMARK_SENDER_EMAIL is not defined in the environment variables");
-      })();
-    /*const email =
-      order.email ||
-      (() => {
-        throw new Error("POSTMARK_SENDER_EMAIL is not defined in the environment variables");
-      })();*/
+    // Create email HTML content
+    const htmlContent = `
+      <html>
+        <body>
+          <h2>Order Confirmation</h2>
+          <p>Thank you for your order!</p>
+          <div style="margin: 20px 0;">
+            <p><strong>Order Details:</strong></p>
+            <p>Title: ${order.title}</p>
+            <p>Price: ${order.price} ${order.currency}</p>
+          </div>
+        </body>
+      </html>
+    `;
+
+    // Configure email options
+    const mailOptions = {
+      from: senderEmail,
+      to: recipientEmail,
+      cc: "ping@paybcn.com",
+      subject: "Order Confirmation",
+      html: htmlContent,
+      text: `Order Confirmation\n\nThank you for your order!\n\nOrder Details:\nTitle: ${order.title}\nPrice: ${order.price} ${order.currency}`,
+    };
 
     // Send email
-    await client.sendEmailWithTemplate({
-      From: senderEmail,
-      To: 'info@paybcn.com',//email
-      Cc: "ping@paybcn.com",
-      TemplateId: 38727940,
-      TemplateModel: {
-        title: order.title,
-        price: order.price,
-        currency: order.currency,
-      },
-    });
+    await transporter.sendMail(mailOptions);
 
     return NextResponse.json({ received: true }, { status: 200 });
   } catch (error) {
-    console.error("Error processing webhook:", error); // Log the error for debugging
+    console.error("Error processing webhook:", error);
     return NextResponse.json({ error: "Error processing webhook" }, { status: 500 });
   }
 }
