@@ -6,12 +6,16 @@ import nodemailer from "nodemailer";
 // Replace with your OVH SMTP credentials
 const transporter = nodemailer.createTransport({
   host: "ssl0.ovh.net",
-  port: 587,
-  secure: false,
+  port: 465, // SSL
+  secure: true,
   auth: {
-    user: process.env.OVH_EMAIL,
+    user: process.env.OVH_EMAIL, // Full email address
     pass: process.env.OVH_PASSWORD,
   },
+  tls: {
+    rejectUnauthorized: true,
+  },
+  debug: true, // Enable debugging logs
 });
 
 // Your shared secret for webhook verification
@@ -44,11 +48,17 @@ export async function POST(req: NextRequest) {
       data: { payment: true },
     });
 
-    const senderEmail = process.env.OVH_EMAIL || 
-      (() => { throw new Error("OVH_EMAIL is not defined in the environment variables"); })();
-    
-    const recipientEmail = order.email || 
-      (() => { throw new Error("Order email is not defined"); })();
+    const senderEmail =
+      process.env.OVH_EMAIL ||
+      (() => {
+        throw new Error("OVH_EMAIL is not defined in the environment variables");
+      })();
+
+    const recipientEmail =
+      order.email ||
+      (() => {
+        throw new Error("Order email is not defined");
+      })();
 
     // Create email HTML content
     const htmlContent = `
