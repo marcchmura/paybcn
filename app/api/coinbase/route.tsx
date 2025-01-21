@@ -1,9 +1,9 @@
+// app/api/webhook/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { prisma } from "@/lib/db";
-import { getCurrencySymbol } from "@/lib/symbol";
+import { sendTelegramNotification } from "@/lib/telegram";
 
-// Your shared secret for webhook verification
 const SHARED_SECRET = process.env.x_cc_webhook_signature;
 
 export async function POST(req: NextRequest) {
@@ -36,28 +36,13 @@ export async function POST(req: NextRequest) {
     if (!order) {
       return NextResponse.json({ received: true }, { status: 200 });
     }
-    const total = order.price * 1.6
-    const symbol = getCurrencySymbol(order.currency)
-    const eth = 1
-    //telegram Bot api
-    const message = `*** New paybcn order! *** \n ☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️ \n \n 🏧 ***${symbol}${total}*** \n 🛂 ${order.title} \n ✅ Thank you! \n \n  🔗 [Paybcn](http://paybcn.com)  ➡️ [Whitepaper](http://paybcn.com/witepaper) `;
-    const telegramApiUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
-    const telegramResponse = await fetch(telegramApiUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: process.env.TELEGRAM_CHANNEL_ID,
-        message_thread_id:process.env.THREAD_ID,
-        text: message,
-        parse_mode: "Markdown",
-      }),
-    });
-
-    if (!telegramResponse.ok) {
-      console.error("Failed to send message via Telegram:", await telegramResponse.text());
-    } else {
+    try {
+      await sendTelegramNotification(order);
       console.log("Telegram notification sent successfully!");
+    } catch (error) {
+      console.error("Failed to send Telegram notification:", error);
+      // Continue execution even if Telegram notification fails
     }
 
     return NextResponse.json({ received: true }, { status: 200 });
