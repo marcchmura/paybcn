@@ -3,10 +3,10 @@ import { Order } from "@prisma/client";
 import { getCurrencySymbol } from "@/lib/symbol";
 
 export async function sendTelegramNotification(order: Order) {
-  const total = order.price * 1.6;
+  const total = (order.price * 1.6).toFixed(2);
   const symbol = getCurrencySymbol(order.currency);
 
-  const message = `*** New paybcn order! *** \n ☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️ \n \n 🏧 ***${symbol}${total}*** \n 🛂 ${order.title} \n ✅ Thank you! \n \n  🔗 [Paybcn](http://paybcn.com)  ➡️ [Whitepaper](http://paybcn.com/witepaper) `;
+  const message = `*** New paybcn order! *** \n ☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️ \n \n 💴 ***${symbol}${total}*** \n 👀 ${order.title} \n 💹 Processing \n \n  🔗 [Support](https://t.me/c/2286354910/2)`;
 
   const telegramApiUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
