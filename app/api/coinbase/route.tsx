@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { prisma } from "@/lib/db";
+import { getCurrencySymbol } from "@/lib/symbol";
 
 // Your shared secret for webhook verification
 const SHARED_SECRET = process.env.x_cc_webhook_signature;
@@ -32,8 +33,14 @@ export async function POST(req: NextRequest) {
       data: { payment: true },
     });
 
+    if (!order) {
+      return NextResponse.json({ received: true }, { status: 200 });
+    }
+    const total = order.price * 1.6
+    const symbol = getCurrencySymbol(order.currency)
+    const eth = 1
     //telegram Bot api
-    const message = `📦 New Order Received!\n\nOrder ID: ${order.title}\nPayment Status: ✅ Paid`;
+    const message = `*** New paybcn order ! *** \n ☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️ \n \n 🏧 ***${symbol}${total}*** \n 🛂 ${order.title} \n ✅ Paid \n \n  🔗[Paybcn](http://paybcn.com)   ➡️[Whitepaper](http://paybcn.com) `;
     const telegramApiUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
     const telegramResponse = await fetch(telegramApiUrl, {
@@ -41,6 +48,7 @@ export async function POST(req: NextRequest) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         chat_id: process.env.TELEGRAM_CHANNEL_ID,
+        message_thread_id:process.env.THREAD_ID,
         text: message,
         parse_mode: "Markdown",
       }),
