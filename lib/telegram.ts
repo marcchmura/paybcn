@@ -5,8 +5,11 @@ import { getCurrencySymbol } from "@/lib/symbol";
 export async function sendTelegramNotification(order: Order) {
   const total = (order.price * 1.6).toFixed(2);
   const symbol = getCurrencySymbol(order.currency);
+  const title = order.title.length > 40 
+  ? order.title.slice(0, 37) + '...' 
+  : order.title;
 
-  const message = `*** New paybcn order! *** \n ☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️ \n \n 💴 ***${symbol}${total}*** \n 👀 ${order.title} \n 💹 Processing \n \n  🔗 [Support](https://t.me/c/2286354910/2)`;
+  const message = `*** New paybcn order! *** \n ☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️ \n \n 🏧 ***${symbol}${total}*** \n 🛂 ${title} \n \n  ➡️ [Support](https://t.me/c/2286354910/2)`;
 
   const telegramApiUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
