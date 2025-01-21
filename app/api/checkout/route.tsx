@@ -4,10 +4,10 @@ import { prisma } from "@/lib/db";
 
 const orderSchema = z.object({
   url: z.string().url({ message: "Must be a valid URL" }).max(1000),
-  email: z.string().email({ message: "Must be a valid email address" }).max(100),
+  telegram: z.string().min(3).max(400),
   title: z.string().min(3).max(400),
   price: z.number().positive({ message: "Price must be a positive number" }),
-  currency: z.enum(["USD", "EUR", "GBP", "SGD", "PLN"], {
+  currency: z.enum(["USD", "EUR", "GBP", "SGD"], {
     errorMap: () => ({ message: "Invalid currency" })
   }),
 });
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     console.log('fields validated')
     const checkout = await prisma.checkout.create({
       data: {
-        email: validatedData.email,
+        telegram: validatedData.telegram,
         title: validatedData.title,
         price: validatedData.price,
         url: validatedData.url,

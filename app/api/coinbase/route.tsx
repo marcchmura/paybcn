@@ -1,22 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { prisma } from "@/lib/db";
-import nodemailer from "nodemailer";
-
-// Replace with your OVH SMTP credentials
-const transporter = nodemailer.createTransport({
-  host: "ssl0.ovh.net",
-  port: 465, // SSL
-  secure: true,
-  auth: {
-    user: process.env.OVH_EMAIL, // Full email address
-    pass: process.env.OVH_PASSWORD,
-  },
-  tls: {
-    rejectUnauthorized: true,
-  },
-  debug: true, // Enable debugging logs
-});
 
 // Your shared secret for webhook verification
 const SHARED_SECRET = process.env.x_cc_webhook_signature;
@@ -48,45 +32,25 @@ export async function POST(req: NextRequest) {
       data: { payment: true },
     });
 
-    const senderEmail =
-      process.env.OVH_EMAIL ||
-      (() => {
-        throw new Error("OVH_EMAIL is not defined in the environment variables");
-      })();
+    //telegram Bot api
+    const message = `📦 New Order Received!\n\nOrder ID: ${order.title}\nPayment Status: ✅ Paid`;
+    const telegramApiUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
-    const recipientEmail =
-      order.email ||
-      (() => {
-        throw new Error("Order email is not defined");
-      })();
+    const telegramResponse = await fetch(telegramApiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: process.env.TELEGRAM_CHANNEL_ID,
+        text: message,
+        parse_mode: "Markdown",
+      }),
+    });
 
-    // Create email HTML content
-    const htmlContent = `
-      <html>
-        <body>
-          <h2>Order Confirmation</h2>
-          <p>Thank you for your order!</p>
-          <div style="margin: 20px 0;">
-            <p><strong>Order Details:</strong></p>
-            <p>Title: ${order.title}</p>
-            <p>Price: ${order.price} ${order.currency}</p>
-          </div>
-        </body>
-      </html>
-    `;
-
-    // Configure email options
-    const mailOptions = {
-      from: senderEmail,
-      to: recipientEmail,
-      cc: "ping@paybcn.com",
-      subject: "Order Confirmation",
-      html: htmlContent,
-      text: `Order Confirmation\n\nThank you for your order!\n\nOrder Details:\nTitle: ${order.title}\nPrice: ${order.price} ${order.currency}`,
-    };
-
-    // Send email
-    await transporter.sendMail(mailOptions);
+    if (!telegramResponse.ok) {
+      console.error("Failed to send message via Telegram:", await telegramResponse.text());
+    } else {
+      console.log("Telegram notification sent successfully!");
+    }
 
     return NextResponse.json({ received: true }, { status: 200 });
   } catch (error) {

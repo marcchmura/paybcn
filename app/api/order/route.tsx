@@ -20,7 +20,7 @@ const orderFormSchema = z.object({
   city: z.string().min(2).max(100, {
     message: "City must be between 2 and 100 characters",
   }),
-  country: z.enum(["USD", "EUR", "GBP", "SGD", "PLN"], {
+  country: z.enum(["United States", "United Kingdom", "France", "Singapore"], {
     errorMap: () => ({ message: "Invalid country selection" }),
   }),
 });
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       where: { id: validatedFormData.checkoutId },
       select: {
         id: true,
-        email: true,
+        telegram: true,
         title: true,
         price: true,
         url: true,
@@ -90,7 +90,7 @@ export async function POST(request: Request) {
         shipping_city: validatedFormData.city,
         shipping_country: validatedFormData.country,
         checkoutId: checkout.id,
-        email: checkout.email,
+        telegram: checkout.telegram,
         title: checkout.title,
         price: checkout.price,
         url: checkout.url,

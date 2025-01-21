@@ -12,7 +12,7 @@ async function getOrderData(uuid) {
       id: true,
       title: true,
       price: true,
-      email: true,
+      telegram: true,
       currency: true,
       payment: true,
     },

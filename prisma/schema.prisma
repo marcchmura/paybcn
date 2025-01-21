@@ -10,7 +10,7 @@ datasource db {
 
 model Checkout {
   id         String    @id @default(uuid())
-  email      String    @db.VarChar(255)
+  telegram      String    @db.VarChar(255)
   title      String    @db.VarChar(255)
   price      Float     
   url        String    @db.Text
@@ -24,7 +24,7 @@ model Checkout {
 model Order {
   id                String    @id @default(uuid())
   variant           String    @db.VarChar(255)
-  email      String    @db.VarChar(255)
+  telegram      String    @db.VarChar(255)
   title      String    @db.VarChar(255)
   price      Float     
   url        String    @db.Text
@@ -41,6 +41,6 @@ model Order {
   checkoutId       String
   checkout         Checkout  @relation(fields: [checkoutId], references: [id])
 
-  @@index([email])
+  @@index([telegram])
   @@index([checkoutId])
 }

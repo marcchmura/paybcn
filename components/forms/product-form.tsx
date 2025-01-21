@@ -7,7 +7,7 @@ import { Link, Loader2 } from "lucide-react";
 import { Turnstile } from "@marsidev/react-turnstile";
 
 type FormData = {
-  email: string;
+  telegram: string;
   price: number;
   url: string;
   title: string;
@@ -39,14 +39,14 @@ export default function ProductForm() {
     setErrors({});
     const form = event.currentTarget;
     const formElements = form.elements as typeof form.elements & {
-      email: HTMLInputElement;
+      telegram: HTMLInputElement;
       link: HTMLInputElement;
     };
 
-    const email = formElements.email.value;
+    const telegram = formElements.telegram.value;
     const link = formElements.link.value;
 
-    if (!email || !price || !link || !titleForm || !currency || !turnstileToken) {
+    if (!telegram || !price || !link || !titleForm || !currency || !turnstileToken) {
       setErrors({ form: "Please fill in all fields, including verification." });
       return;
     }
@@ -54,7 +54,7 @@ export default function ProductForm() {
     setIsSubmitting(true);
 
     const payload: FormData = {
-      email,
+      telegram,
       price: parseFloat(price),
       url: link,
       title: titleForm,
@@ -134,10 +134,9 @@ export default function ProductForm() {
         </div>
         {errors.link && <div className="text-red-500 text-sm">{errors.link}</div>}
       </div>
-
       <div className="space-y-1">
-        <Input name="email" type="email" placeholder="Email" required className={errors.email ? "border-red-500" : ""} />
-        {errors.email && <div className="text-red-500 text-sm">{errors.email}</div>}
+        <Input name="telegram" type="text" placeholder="Telegram username" required className={errors.telegram ? "border-red-500" : ""} />
+        {errors.telegram && <div className="text-red-500 text-sm">{errors.telegram}</div>}
       </div>
 
       <div className="space-y-1">
@@ -162,7 +161,6 @@ export default function ProductForm() {
                 <SelectItem value="EUR">EUR</SelectItem>
                 <SelectItem value="GBP">GBP</SelectItem>
                 <SelectItem value="SGD">SGD</SelectItem>
-                <SelectItem value="PLN">PLN</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
@@ -173,7 +171,7 @@ export default function ProductForm() {
       <Turnstile siteKey={process.env.NODE_ENV === "development" ? "1x00000000000000000000AA" : "0x4AAAAAAAIdSlK2oYYsGQpg"} onSuccess={(token: string) => setTurnstileToken(token)} onError={() => setTurnstileToken(null)} onExpire={() => setTurnstileToken(null)} />
 
       <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? <Loader2 className="animate-spin pointer-events-none h-5 w-5 text-muted-foreground" />  : "Buy"}
+        {isSubmitting ? <Loader2 className="animate-spin pointer-events-none h-5 w-5 text-muted-foreground" /> : "Buy"}
       </Button>
     </form>
   );

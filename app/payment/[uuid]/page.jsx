@@ -4,6 +4,7 @@ import { Progress } from "@/components/ui/progress";
 import CoinbaseButton from "@/components/forms/coinbase-button";
 import { notFound, redirect } from "next/navigation";
 import { Label } from "@/components/ui/label";
+import { getCurrencySymbol } from "@/lib/symbol";
 
 async function getOrderData(uuid) {
   const OrderData = await prisma.order.findUnique({
@@ -12,7 +13,7 @@ async function getOrderData(uuid) {
       id: true,
       title: true,
       price: true,
-      email: true,
+      telegram: true,
       currency: true,
       payment: true,
     },
@@ -33,8 +34,9 @@ export default async function CheckoutPage({ params }) {
     redirect("/confirmation/" + OrderData.id);
   }
 
+  const symbol = getCurrencySymbol(OrderData.currency)
   const subtotal = Number(OrderData.price).toFixed(2);
-  const transaction_fee = (OrderData.price * 0.3).toFixed(2);
+  const transaction_fee = (OrderData.price * 0.6).toFixed(2);
   const total = (Number(subtotal) + Number(transaction_fee)).toFixed(2);
   const uuid = params.uuid;
   return (
@@ -43,7 +45,7 @@ export default async function CheckoutPage({ params }) {
       <Progress value={75} />
       <div className="space-y-2 flex flex-col w-full">
       <Label>Contact information</Label>
-      <Input type="text" value={OrderData.email} disabled />
+      <Input type="text" value={`@${OrderData.telegram}`} disabled />
       </div>
 
 
@@ -56,7 +58,7 @@ export default async function CheckoutPage({ params }) {
           <dl>
             <dt className="text-sm font-medium">Payment details</dt>
             <dd className="mt-1 text-3xl font-bold tracking-tight pb-4">
-              {OrderData.currency}
+              {symbol}
               {total}
             </dd>
           </dl>
@@ -67,7 +69,7 @@ export default async function CheckoutPage({ params }) {
                 <h3 className=" font-regular">Subtotal</h3>
               </div>
               <p className="flex-none text-sm font-medium">
-                {OrderData.currency}
+                {symbol}
                 {subtotal}
               </p>
             </li>
@@ -77,7 +79,7 @@ export default async function CheckoutPage({ params }) {
                 <h3 className=" font-regular">Transaction fee</h3>
               </div>
               <p className="flex-none text-sm font-medium">
-                {OrderData.currency}
+                {symbol}
                 {transaction_fee}
               </p>
             </li>
@@ -87,7 +89,7 @@ export default async function CheckoutPage({ params }) {
             <div className="flex items-center justify-between border-t border-foreground/10 pt-4">
               <dt className="font-semibold">Total</dt>
               <dd className="font-semibold">
-                {OrderData.currency}
+                {symbol}
                 {total}
               </dd>
             </div>

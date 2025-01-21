@@ -22,7 +22,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "Order not found" }, { status: 401 });
     }
 
-    const checkout_price = (order.price * 1.3).toFixed(2);
+    const checkout_price = (order.price * 1.6).toFixed(2);
 
     const data = {
       name: "okeo",
@@ -35,8 +35,8 @@ export async function POST(request: Request) {
       metadata: {
         order_id: orderId,
       },
-      redirect_url: `https://bulle.co/app/dashboard`,
-      cancel_url: `https://bulle.co/app/dashboard`,
+      redirect_url: `https://paybcn.com/confirmation/${order.id}`,
+      cancel_url: `https://paybcn.com/`,
     };
 
     const config = {

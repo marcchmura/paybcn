@@ -25,7 +25,7 @@ const timeline = [
 export default function referral() {
   return (
     <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12 flex items-start space-y-6 flex-col w-full sm:w-[800px]">
-      <h3 className="text-xl font-medium">Paybcn - Shop with crypto - 2025 Whitepaper</h3>
+      <h3 className="text-xl font-medium">Paybcn Shop with Crypto</h3>
       <p className="text-sm/6">
         Paybcn is a cutting-edge platform designed to enable seamless cryptocurrency payments for e-commerce transactions. By addressing key pain points such as high fees, complex conversion processes, and limited merchant adoption, Paybcn empowers users to leverage their digital assets efficiently.
         This open-source project aims to drive mainstream adoption of cryptocurrencies in online shopping, prioritizing security, transparency, and usability.

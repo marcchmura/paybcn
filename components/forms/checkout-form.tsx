@@ -98,17 +98,15 @@ export default function CheckoutForm({ checkoutData }: CheckoutFormProps) {
   };
 
   const countryOptions = [
-    { value: "USD", label: "United States" },
-    { value: "EUR", label: "France" },
-    { value: "GBP", label: "United Kingdom" },
-    { value: "PLN", label: "Poland" },
-    { value: "SGD", label: "Singapore" },
+    { value: "United States", label: "United States" },
+    { value: "United Kingdom", label: "United Kingdom" },
+    { value: "France", label: "France" },
+    { value: "Singapore", label: "Singapore" },
   ];
 
   return (
     <form onSubmit={handleSubmit} className="w-full space-y-3">
-      <Label>Shipping details</Label>
-
+      <Label>Enter your shipping details</Label>
       <Input className="hidden" name="variant" type="text" value={formData.variant} onChange={handleInputChange} />
       <Input className="hidden" name="checkoutId" type="text" value={formData.checkoutId} readOnly />
       <Input name="name" type="text" placeholder="Full name" required value={formData.name} onChange={handleInputChange} />
