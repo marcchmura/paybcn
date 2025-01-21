@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     const symbol = getCurrencySymbol(order.currency)
     const eth = 1
     //telegram Bot api
-    const message = `*** New paybcn order ! *** \n ☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️ \n \n 🏧 ***${symbol}${total}*** \n 🛂 ${order.title} \n ✅ Paid \n \n  🔗[Paybcn](http://paybcn.com)   ➡️[Whitepaper](http://paybcn.com) `;
+    const message = `*** New paybcn order! *** \n ☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️ \n \n 🏧 ***${symbol}${total}*** \n 🛂 ${order.title} \n ✅ Thank you! \n \n  🔗 [Paybcn](http://paybcn.com)  ➡️ [Whitepaper](http://paybcn.com/witepaper) `;
     const telegramApiUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 
     const telegramResponse = await fetch(telegramApiUrl, {
