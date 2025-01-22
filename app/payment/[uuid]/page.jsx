@@ -41,11 +41,11 @@ export default async function CheckoutPage({ params }) {
   const uuid = params.uuid;
   return (
     <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12 flex items-start space-y-6 flex-col w-full sm:w-[400px]">
-      <h3 className="text-xl tracking-tight text-pretty line-clamp-2 text-ellipsis overflow-hidden">{OrderData.title}</h3>
+      <h3 className="text-xl tracking-tight text-pretty line-clamp-2 text-ellipsis overflow-hidden">Pay {symbol}{total} to process your order</h3>
       <Progress value={75} />
       <div className="space-y-2 flex flex-col w-full">
       <Label>Contact information</Label>
-      <Input type="text" value={`@${OrderData.telegram}`} disabled />
+      <Input type="text" value={`${OrderData.telegram}`} disabled />
       </div>
 
 

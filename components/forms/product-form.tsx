@@ -7,7 +7,7 @@ import { Link, Loader2 } from "lucide-react";
 import { Turnstile } from "@marsidev/react-turnstile";
 
 type FormData = {
-  telegram: string;
+  email: string;
   price: number;
   url: string;
   title: string;
@@ -39,14 +39,14 @@ export default function ProductForm() {
     setErrors({});
     const form = event.currentTarget;
     const formElements = form.elements as typeof form.elements & {
-      telegram: HTMLInputElement;
+      email: HTMLInputElement;
       link: HTMLInputElement;
     };
 
-    const telegram = formElements.telegram.value;
+    const email = formElements.email.value;
     const link = formElements.link.value;
 
-    if (!telegram || !price || !link || !titleForm || !currency || !turnstileToken) {
+    if (!email || !price || !link || !titleForm || !currency || !turnstileToken) {
       setErrors({ form: "Please fill in all fields, including verification." });
       return;
     }
@@ -54,7 +54,7 @@ export default function ProductForm() {
     setIsSubmitting(true);
 
     const payload: FormData = {
-      telegram,
+      email,
       price: parseFloat(price),
       url: link,
       title: titleForm,
@@ -135,8 +135,8 @@ export default function ProductForm() {
         {errors.link && <div className="text-red-500 text-sm">{errors.link}</div>}
       </div>
       <div className="space-y-1">
-        <Input name="telegram" type="text" placeholder="Telegram username" required className={errors.telegram ? "border-red-500" : ""} />
-        {errors.telegram && <div className="text-red-500 text-sm">{errors.telegram}</div>}
+        <Input name="email" type="email" placeholder="Email" required className={errors.email ? "border-red-500" : ""} />
+        {errors.email && <div className="text-red-500 text-sm">{errors.email}</div>}
       </div>
 
       <div className="space-y-1">

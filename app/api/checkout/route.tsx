@@ -4,7 +4,7 @@ import { prisma } from "@/lib/db";
 
 const orderSchema = z.object({
   url: z.string().url({ message: "Must be a valid URL" }).max(1000),
-  telegram: z.string().min(3).max(400),
+  email: z.string().email({ message: "Email must be valid" }).max(400),
   title: z.string().min(3).max(400),
   price: z.number().positive({ message: "Price must be a positive number" }),
   currency: z.enum(["USD", "EUR", "GBP", "SGD"], {
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     console.log('fields validated')
     const checkout = await prisma.checkout.create({
       data: {
-        telegram: validatedData.telegram,
+        telegram: validatedData.email,
         title: validatedData.title,
         price: validatedData.price,
         url: validatedData.url,

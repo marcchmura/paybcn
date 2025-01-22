@@ -21,7 +21,7 @@ const CoinbaseButton: React.FC<CoinbaseButtonProps> = ({ orderId }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          orderId, // Use the correct key
+          orderId,
         }),
       });
 
