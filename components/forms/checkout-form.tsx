@@ -1,5 +1,4 @@
 "use client";
-import { Label } from "@/components/ui/label";
 import { Loader2 } from "lucide-react";
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
