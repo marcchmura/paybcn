@@ -36,7 +36,7 @@ export default async function CheckoutPage({ params }) {
 
   const symbol = getCurrencySymbol(OrderData.currency)
   const subtotal = Number(OrderData.price).toFixed(2);
-  const transaction_fee = (OrderData.price * 0.6).toFixed(2);
+  const transaction_fee = (OrderData.price * 0.3).toFixed(2);
   const total = (Number(subtotal) + Number(transaction_fee)).toFixed(2);
   const uuid = params.uuid;
   return (

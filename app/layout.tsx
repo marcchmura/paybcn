@@ -9,9 +9,22 @@ const inter = Poppins({
   weight: "400",
   subsets: ["latin"],
 });
+
 export const metadata: Metadata = {
-  title: "Shop with Crypto as Easily as Cash | Paybcn",
+  title: "Shop with Crypto | Paybcn",
   description: "Shop effortlessly with cryptocurrency using our secure and intuitive platform. Experience simplicity, privacy, and seamless transactions for all your shopping needs.",
+  openGraph: {
+    title: "Shop with Crypto | Paybcn",
+    description: "Shop effortlessly with cryptocurrency using our secure and intuitive platform. Experience simplicity, privacy, and seamless transactions for all your shopping needs.",
+    images: [
+      {
+        url: "/share.png",
+        width: 1200,
+        height: 630,
+        alt: "Shop with Crypto | Paybcn",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

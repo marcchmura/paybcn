@@ -9,7 +9,7 @@ export async function sendTelegramNotification(order: Order) {
   ? order.title.slice(0, 97) + '...' 
   : order.title;
 
-  const message = `*** Paybcn order! *** \n ☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️☁️ \n \n 🏧 ***${symbol}${total}*** \n 🛂 ${title} \n \n ***Thank you for your trust!*** \n \n  ➡️ [Support](https://t.me/c/2286354910/2)`;
+  const message = `*** New paybcn order! *** \n ☁️☁️☁️ \n \n 💲 ***${symbol}${total}*** \n 👀 ${title} \n \n  ➡️ [Support](https://t.me/c/2286354910/2)`;
 
   const telegramApiUrl = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`;
 

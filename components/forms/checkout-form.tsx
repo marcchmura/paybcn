@@ -106,7 +106,6 @@ export default function CheckoutForm({ checkoutData }: CheckoutFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="w-full space-y-3">
-      <Label>Enter your shipping details</Label>
       <Input className="hidden" name="variant" type="text" value={formData.variant} onChange={handleInputChange} />
       <Input className="hidden" name="checkoutId" type="text" value={formData.checkoutId} readOnly />
       <Input name="name" type="text" placeholder="Full name" required value={formData.name} onChange={handleInputChange} />
