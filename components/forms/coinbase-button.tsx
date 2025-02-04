@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 interface CoinbaseButtonProps {
   orderId: string;
@@ -50,7 +51,7 @@ const CoinbaseButton: React.FC<CoinbaseButtonProps> = ({ orderId }) => {
       onClick={handlePayment}
       disabled={isSubmitting}
     >
-      {isSubmitting ? "Processing..." : "Pay with Coinbase"}
+      {isSubmitting ? <Loader2 className="animate-spin pointer-events-none h-5 w-5 text-muted-foreground" /> : "Pay with Coinbase"}
     </Button>
   );
 };
