@@ -7,11 +7,12 @@ export default function Example() {
       <div className="flex flex-col items-center space-y-2 lg:w-86">
         <h3 className="text-xl tracking-tight text-pretty">Shop with Crypto as Easily as Cash.</h3>
         <h3 className="text-xl tracking-tight text-pretty">Fast. Reliable. Secure.</h3>
+        <p className="sr-only">Paybcn lets you create an order for a product, fill in your shipping details, and then acts as an intermediary to place the order for you, paying with your chosen cryptocurrency.</p>
       </div>
       <Link href={"/testimonials"} className="text-xs w-full">
         <div className="flex space-x-2 justify-between  items-center">
           <div className="flex flex-col">
-            <div className="flex">
+            <div className="flex fill-current">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-3">
                 <path
                   fillRule="evenodd"
@@ -51,7 +52,7 @@ export default function Example() {
             <span className="text-xs">4.8 out of 5</span>
           </div>
           <div className="flex flex-col text-center">
-            <span className="text-xs">10,000</span>
+            <span className="text-xs">10K</span>
             <span className="text-xs">Community</span>
           </div>
           <div className="flex flex-col text-center">

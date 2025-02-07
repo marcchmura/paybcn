@@ -11,6 +11,7 @@ const navigation = [
   { name: "Reviews", href: "/testimonials" },
   { name: "Whitepaper", href: "/whitepaper" },
   { name: "FAQs", href: "/faq" },
+  { name: "Legal", href: "/terms" },
 ];
 
 export default function Example() {

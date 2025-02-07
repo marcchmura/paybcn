@@ -13,10 +13,10 @@ const inter = Poppins({
 
 export const metadata: Metadata = {
   title: "Shop with Crypto | Paybcn",
-  description: "Shop effortlessly with cryptocurrency using our secure and intuitive platform. Experience simplicity, privacy, and seamless transactions for all your shopping needs.",
+  description: "Paybcn allows you to shop at your favorite stores and pay with 30+ cryptocurrencies. Enjoy secure, fast, and private transactions with no extra fees.",
   openGraph: {
     title: "Shop with Crypto | Paybcn",
-    description: "Shop effortlessly with cryptocurrency using our secure and intuitive platform. Experience simplicity, privacy, and seamless transactions for all your shopping needs.",
+    description: "Paybcn allows you to shop at your favorite stores and pay with 30+ cryptocurrencies. Enjoy secure, fast, and private transactions with no extra fees.",
     images: [
       {
         url: "/share.png",

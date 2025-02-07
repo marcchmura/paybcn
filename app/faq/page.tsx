@@ -8,19 +8,24 @@ export default function AccordionDemo() {
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>What is Paybcn?</AccordionTrigger>
-          <AccordionContent>Paybcn is a shopping intermediary that helps you purchase products with crypto. You can create shopping wish lists by adding product links, and we&apos;ll handle the checkout process using your shipping credentials.</AccordionContent>
+          <AccordionContent>Paybcn lets you shop at your favorite stores and pay with 30+ cryptocurrencies. It&apos;s fast, secure, and private.</AccordionContent>
         </AccordionItem>
+
         <AccordionItem value="item-2">
           <AccordionTrigger>What stores can I shop from?</AccordionTrigger>
-          <AccordionContent>You can add products from virtually any online store that supports standard shopping carts. Once we process your order, we&apos;ll send it directly to the store for fulfillment using your shipping credentials.</AccordionContent>
+          <AccordionContent>You can add products from any online store that supports standard shopping carts. Once we process your order, we&apos;ll send it directly to the store for fulfillment using your shipping details.</AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-3">
           <AccordionTrigger>How secure is my payment and personal information?</AccordionTrigger>
-          <AccordionContent>We prioritize your privacy and security. Payments are processed through secure cryptocurrency payment systems, and your personal details, including shipping information, are stored with the highest encryption standards.</AccordionContent>
+          <AccordionContent>Payments are processed through secure cryptocurrency payment systems, and your personal details, including shipping information, are stored with the highest encryption standards.</AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-4">
           <AccordionTrigger>What cryptocurrencies do you accept?</AccordionTrigger>
           <AccordionContent>We currently accept USDC (USD Coin) for all transactions. This ensures fast, secure, and stable payments for your shopping experience.</AccordionContent>
+        </AccordionItem>
+        <AccordionItem value="item-5">
+          <AccordionTrigger>Is my wallet linked to my shipping address?</AccordionTrigger>
+          <AccordionContent>No, your wallet is not directly linked to your shipping address. Payments are processed through a secure third-party service that validates your order, ensuring your wallet and shipping information remain separate.</AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
