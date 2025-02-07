@@ -3,21 +3,21 @@ import { useEffect, useRef } from 'react';
 const people = [
   {
     name: "Lindsay Walton",
-    role: "Front-end Developer",
+    role: "Front-end Deloper",
     imageUrl: "/testimonial1.mp4",
     xUrl: "#",
     linkedinUrl: "#",
   },
   {
     name: "Lindsay Walon",
-    role: "Front-end Developer",
+    role: "Front-end Der",
     imageUrl: "/testimonial2.mp4",
     xUrl: "#",
     linkedinUrl: "#",
   },
   {
     name: "Lindsay Won",
-    role: "Front-end Developer",
+    role: "Frond Developer",
     imageUrl: "/testimonial3.mp4",
     xUrl: "#",
     linkedinUrl: "#",
@@ -120,14 +120,15 @@ export default function Example() {
           {people.map((person, index) => (
             <li key={person.name} className="flex flex-col items-center p-4 rounded-2xl">
               <div className="relative w-full rounded-xl overflow-hidden">
-                <video
-                  ref={(el) => (videoRefs.current[index] = el)}
-                  src={person.imageUrl}
-                  controls
-                  muted
-                  {...(index === 0 && { autoPlay: true, loop: true })}
-                  className="w-full h-full object-cover rounded-xl"
-                />
+              <video
+  ref={(el) => (videoRefs.current[index] = el)}
+  src={person.imageUrl}
+  controls
+  muted
+  poster={`/testimonial${index + 1}.png`} // Add poster image
+  {...(index === 0 && { autoPlay: true, loop: true })}
+  className="w-full h-full object-cover rounded-xl"
+/>
               </div>
             </li>
           ))}
