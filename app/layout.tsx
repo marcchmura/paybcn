@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <GoogleTagManager gtmId="G-J81C8L97XG" />
+      <GoogleTagManager gtmId="G-E1RXVN16GP" />
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="min-h-screen flex justify-between flex-col">
