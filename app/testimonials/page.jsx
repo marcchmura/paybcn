@@ -8,20 +8,6 @@ const people = [
     xUrl: "#",
     linkedinUrl: "#",
   },
-  {
-    name: "Lindsay Walon",
-    role: "Front-end Der",
-    imageUrl: "/testimonial2.mp4",
-    xUrl: "#",
-    linkedinUrl: "#",
-  },
-  {
-    name: "Lindsay Won",
-    role: "Frond Developer",
-    imageUrl: "/testimonial3.mp4",
-    xUrl: "#",
-    linkedinUrl: "#",
-  },
   // More people...
 ];
 
@@ -113,10 +99,9 @@ export default function Example() {
 
   return (
     <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12 flex items-center space-y-4 flex-col w-full sm:w-[800px]">
-      <span className='font-primary text-sm'>Testimonials</span>
       <h3 className="text-xl font-medium text-center">Don’t just take our word for it, listen to what our users have to say.</h3>
       <div>
-        <ul role="list" className="mx-auto py-4 grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <ul role="list" className="mx-auto py-4 grid grid-cols-1 gap-x-8 gap-y-2 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:hidden">
           {people.map((person, index) => (
             <li key={person.name} className="flex flex-col items-center p-4 rounded-2xl">
               <div className="relative w-full rounded-xl overflow-hidden">
@@ -125,7 +110,6 @@ export default function Example() {
   src={person.imageUrl}
   controls
   muted
-  poster={`/testimonial${index + 1}.png`} // Add poster image
   {...(index === 0 && { autoPlay: true, loop: true })}
   className="w-full h-full object-cover rounded-xl"
 />
