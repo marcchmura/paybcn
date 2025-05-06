@@ -1,6 +1,5 @@
 import { prisma } from "@/lib/db";
 import { Input } from "@/components/ui/input";
-import { Progress } from "@/components/ui/progress";
 import CoinbaseButton from "@/components/forms/coinbase-button";
 import { notFound, redirect } from "next/navigation";
 import { Label } from "@/components/ui/label";

@@ -160,7 +160,7 @@ export default function ProductForm() {
             <div className="flex flex-col space-y-3">
             <Input name="title" type="text" placeholder="Product Name" value={formData.title} onChange={handleChange} required />
             <div className="flex space-x-2">
-              <Input name="price" type="number" placeholder="Price" value={formData.price} onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) })} required />
+            <Input name="price" type="number" placeholder="Price" value={formData.price} onChange={handleChange} required />
 
               <Select value={formData.currency} onValueChange={handleCurrencyChange}>
                 <SelectTrigger>

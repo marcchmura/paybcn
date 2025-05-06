@@ -1,11 +1,10 @@
 'use client'
 import { useState } from "react";
 import { Dialog, DialogPanel, Transition } from "@headlessui/react";
-import { Globe, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Logo from "@/components/logo";
 import Link from "next/link";
 import { Fragment } from "react";
-import { Button } from "./ui/button";
 
 const navigation = [
   { name: "Home", href: "/" },

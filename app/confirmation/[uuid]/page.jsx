@@ -1,5 +1,4 @@
 import { prisma } from "@/lib/db";
-import { Progress } from "@/components/ui/progress";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link";
