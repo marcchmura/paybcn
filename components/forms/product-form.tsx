@@ -135,8 +135,15 @@ export default function ProductForm() {
   }, [query]);
 
   useEffect(() => {
-    if (query) handleSearch();
+    if (query) {
+      setFormData((prev) => ({
+        ...prev,
+        url: query,
+      }));
+      handleSearch();
+    }
   }, [query, handleSearch]);
+  
 
   return (
     <form onSubmit={handleSubmit} className="w-full space-y-8">
@@ -147,61 +154,72 @@ export default function ProductForm() {
             <h2 className="text-sm/6 font-medium text-foreground hidden md:block">Product link</h2>
             <div className="relative">
               {loading ? <Loader2 className="animate-spin absolute top-5 right-4 h-4 w-4 text-muted-foreground" /> : <Link className="absolute top-5 right-4 h-4 w-4 text-muted-foreground" />}
-              <Input name="url" type="url" placeholder="Product link" value={query} onChange={(e) => setQuery(e.target.value)} required className="pr-10" />
+              <Input
+                name="url"
+                type="url"
+                placeholder="Product link"
+                value={formData.url}
+                onChange={(e) => {
+                  handleChange(e);
+                  setQuery(e.target.value);
+                }}
+                required
+                className="pr-10"
+              />
             </div>
           </div>
 
           <div className="flex flex-col md:space-y-1">
-          <h2 className="text-sm/6 font-medium text-foreground hidden md:block">Contact information</h2>
+            <h2 className="text-sm/6 font-medium text-foreground hidden md:block">Contact information</h2>
             <Input name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
           </div>
           <div className="flex flex-col md:space-y-1">
             <h2 className="text-sm/6 font-medium text-foreground hidden md:block">Product details</h2>
             <div className="flex flex-col space-y-3">
-            <Input name="title" type="text" placeholder="Product Name" value={formData.title} onChange={handleChange} required />
-            <div className="flex space-x-2">
-            <Input name="price" type="number" placeholder="Price" value={formData.price} onChange={handleChange} required />
+              <Input name="title" type="text" placeholder="Product Name" value={formData.title} onChange={handleChange} required />
+              <div className="flex space-x-2">
+                <Input name="price" type="number" placeholder="Price" value={formData.price} onChange={handleChange} required />
 
-              <Select value={formData.currency} onValueChange={handleCurrencyChange}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Currency" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem value="USD">USD</SelectItem>
-                    <SelectItem value="EUR">EUR</SelectItem>
-                    <SelectItem value="GBP">GBP</SelectItem>
-                    <SelectItem value="SGD">SGD</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </div>
+                <Select value={formData.currency} onValueChange={handleCurrencyChange}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Currency" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="USD">USD</SelectItem>
+                      <SelectItem value="EUR">EUR</SelectItem>
+                      <SelectItem value="GBP">GBP</SelectItem>
+                      <SelectItem value="SGD">SGD</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </div>
           <div className="flex flex-col md:space-y-1">
             <h2 className="text-sm/6 font-medium text-foreground hidden md:block">Shipping</h2>
             <div className="flex flex-col space-y-3">
-            <Input name="name" type="text" placeholder="Full Name" value={formData.name} onChange={handleChange} required />
-            <Input name="address" type="text" placeholder="Address" value={formData.address} onChange={handleChange} required />
-            <div className="flex space-x-2">
-              <Input name="city" type="text" placeholder="City" value={formData.city} onChange={handleChange} required />
-              <Input name="zip" type="text" placeholder="Postcode" value={formData.zip} onChange={handleChange} required />
-            </div>
-            <div className="w-full">
-              <Select value={formData.country} onValueChange={handleCountryChange}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Country" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectItem value="United States">United States</SelectItem>
-                    <SelectItem value="United Kingdom">United Kingdom</SelectItem>
-                    <SelectItem value="France">France</SelectItem>
-                    <SelectItem value="Singapore">Singapore</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
-            </div>
+              <Input name="name" type="text" placeholder="Full Name" value={formData.name} onChange={handleChange} required />
+              <Input name="address" type="text" placeholder="Address" value={formData.address} onChange={handleChange} required />
+              <div className="flex space-x-2">
+                <Input name="city" type="text" placeholder="City" value={formData.city} onChange={handleChange} required />
+                <Input name="zip" type="text" placeholder="Postcode" value={formData.zip} onChange={handleChange} required />
+              </div>
+              <div className="w-full">
+                <Select value={formData.country} onValueChange={handleCountryChange}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Country" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="United States">United States</SelectItem>
+                      <SelectItem value="United Kingdom">United Kingdom</SelectItem>
+                      <SelectItem value="France">France</SelectItem>
+                      <SelectItem value="Singapore">Singapore</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
             </div>
           </div>
 
