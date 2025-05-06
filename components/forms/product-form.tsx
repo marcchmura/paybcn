@@ -147,7 +147,7 @@ export default function ProductForm() {
             <h2 className="text-sm/6 font-medium text-foreground hidden md:block">Product link</h2>
             <div className="relative">
               {loading ? <Loader2 className="animate-spin absolute top-5 right-4 h-4 w-4 text-muted-foreground" /> : <Link className="absolute top-5 right-4 h-4 w-4 text-muted-foreground" />}
-              <Input name="link" type="url" placeholder="Product link" value={query} onChange={(e) => setQuery(e.target.value)} required className="pr-10" />
+              <Input name="url" type="url" placeholder="Product link" value={query} onChange={(e) => setQuery(e.target.value)} required className="pr-10" />
             </div>
           </div>
 
