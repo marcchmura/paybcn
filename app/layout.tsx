@@ -3,7 +3,6 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { ThemeProvider } from "@/components/theme-provider";
 import { GoogleTagManager } from '@next/third-parties/google'
 
 const inter = Poppins({
@@ -37,7 +36,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <GoogleTagManager gtmId="G-E1RXVN16GP" />
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <div className="min-h-screen flex justify-between flex-col">
             <div className="flex flex-col">
               <Header />
@@ -46,7 +44,6 @@ export default function RootLayout({
 
             <Footer />
           </div>
-        </ThemeProvider>
       </body>
     </html>
   );

@@ -31,7 +31,7 @@ export async function POST(request: Request) {
     );
 
     const { product } = data;
-    console.log('Product found');
+    console.log("Product found");
 
     return NextResponse.json({
       product,

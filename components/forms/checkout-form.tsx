@@ -104,31 +104,33 @@ export default function CheckoutForm({ checkoutData }: CheckoutFormProps) {
   ];
 
   return (
-    <form onSubmit={handleSubmit} className="w-full space-y-3">
-      <Input className="hidden" name="variant" type="text" value={formData.variant} onChange={handleInputChange} />
-      <Input className="hidden" name="checkoutId" type="text" value={formData.checkoutId} readOnly />
-      <Input name="name" type="text" placeholder="Full name" required value={formData.name} onChange={handleInputChange} />
-      <Input name="address" type="text" placeholder="Address" required value={formData.address} onChange={handleInputChange} />
-      <div className="flex space-x-2">
-        <Input name="city" type="text" placeholder="City" required value={formData.city} onChange={handleInputChange} />
-        <Input name="zip" type="text" placeholder="Postcode" required value={formData.zip} onChange={handleInputChange} />
+    <form onSubmit={handleSubmit} className="w-full space-y-8 ">
+      <div className="flex flex-col space-y-3">
+        <Input className="hidden" name="variant" type="text" value={formData.variant} onChange={handleInputChange} />
+        <Input className="hidden" name="checkoutId" type="text" value={formData.checkoutId} readOnly />
+        <Input name="name" type="text" placeholder="Full name" required value={formData.name} onChange={handleInputChange} />
+        <Input name="address" type="text" placeholder="Address" required value={formData.address} onChange={handleInputChange} />
+        <div className="flex space-x-2">
+          <Input name="city" type="text" placeholder="City" required value={formData.city} onChange={handleInputChange} />
+          <Input name="zip" type="text" placeholder="Postcode" required value={formData.zip} onChange={handleInputChange} />
+        </div>
+        <Select value={formData.country} onValueChange={handleCountryChange} required>
+          <SelectTrigger>
+            <SelectValue placeholder="Country" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              {countryOptions.map(({ value, label }) => (
+                <SelectItem key={value} value={value}>
+                  {label}
+                </SelectItem>
+              ))}
+            </SelectGroup>
+          </SelectContent>
+        </Select>
       </div>
-      <Select value={formData.country} onValueChange={handleCountryChange} required>
-        <SelectTrigger>
-          <SelectValue placeholder="Country" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectGroup>
-            {countryOptions.map(({ value, label }) => (
-              <SelectItem key={value} value={value}>
-                {label}
-              </SelectItem>
-            ))}
-          </SelectGroup>
-        </SelectContent>
-      </Select>
-      <Button type="submit" className="w-full" disabled={isSubmitting}>
-        {isSubmitting ? <Loader2 className="animate-spin pointer-events-none h-5 w-5 text-muted-foreground" />  : "Continue"}
+      <Button type="submit" className="w-full rounded-full h-12" disabled={isSubmitting}>
+        {isSubmitting ? <Loader2 className="animate-spin pointer-events-none h-5 w-5 text-muted-foreground" /> : "Continue"}
       </Button>
     </form>
   );

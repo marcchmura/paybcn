@@ -47,11 +47,11 @@ const CoinbaseButton: React.FC<CoinbaseButtonProps> = ({ orderId }) => {
 
   return (
     <Button
-      className="w-full"
+      className="w-full md:w-48 h-12 rounded-full"
       onClick={handlePayment}
       disabled={isSubmitting}
     >
-      {isSubmitting ? <Loader2 className="animate-spin pointer-events-none h-5 w-5 text-muted-foreground" /> : "Pay with Coinbase"}
+      {isSubmitting ? <Loader2 className="animate-spin pointer-events-none h-5 w-5 text-muted-foreground" /> : "Proceed to payment"}
     </Button>
   );
 };

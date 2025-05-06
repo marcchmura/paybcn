@@ -35,8 +35,8 @@ export async function POST(request: Request) {
       metadata: {
         order_id: orderId,
       },
-      redirect_url: `https://paybcn.com/confirmation/${order.id}`,
       cancel_url: `https://paybcn.com/`,
+      redirect_url:`https://paybcn.com/`,
     };
 
     const config = {

@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.ts", "app/checkout/[uuid]/page.jsx", "app/payment/[uuid]/page.jsx", "app/api/coinbase/route.tsx", "components/footer.jsx", "components/lang-selector.jsx", "app/testimonials/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "next.config.ts", "app/checkout/[uuid]/page.jsx", "app/checkout/[uuid]/page.jsx", "app/api/coinbase/route.tsx", "components/footer.jsx", "components/lang-selector.jsx", "app/testimonials/page.jsx"],
   "exclude": ["node_modules"]
 }

@@ -3,76 +3,88 @@ import { z } from "zod";
 import { prisma } from "@/lib/db";
 
 const orderSchema = z.object({
-  url: z.string().url({ message: "Must be a valid URL" }).max(1000),
-  email: z.string().email({ message: "Email must be valid" }).max(400),
+  email: z.string().email().max(400),
+  url: z.string().url().max(1000),
   title: z.string().min(3).max(400),
-  price: z.number().positive({ message: "Price must be a positive number" }),
-  currency: z.enum(["USD", "EUR", "GBP", "SGD"], {
-    errorMap: () => ({ message: "Invalid currency" })
-  }),
+  price: z.coerce.number().positive(),
+  currency: z.enum(["USD", "EUR", "GBP", "SGD"]),
+  name: z.string().min(2).max(255),
+  address: z.string().min(5).max(1000),
+  city: z.string().min(2).max(100),
+  zip: z.string().min(2).max(20),
+  country: z.enum(["United States", "United Kingdom", "France", "Singapore"]),
 });
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    console.log(body)
-    const validateFields = orderSchema.safeParse(body);
+    console.log("📥 Received body:", body);
 
-    if (!validateFields.success) {
-      const { fieldErrors } = validateFields.error.flatten();
+    if (!body || typeof body !== "object") {
+      console.error("❌ Invalid JSON body received");
+      throw new TypeError("Invalid JSON payload");
+    }
+
+    const validation = orderSchema.safeParse(body);
+
+    if (!validation.success) {
+      const errorDetails = validation.error.flatten();
+      console.warn("⚠️ Validation errors:", errorDetails);
       return NextResponse.json(
         {
           status: "error",
-          errors: fieldErrors,
           message: "Validation failed",
+          errors: errorDetails.fieldErrors,
         },
         { status: 400 }
       );
     }
-    console.log('fields pretty validated')
-    const validatedData = validateFields.data;
-    console.log('fields validated')
-    const checkout = await prisma.checkout.create({
+
+    const {
+      email, url, title, price, currency,
+      name, address, city, zip, country,
+    } = validation.data;
+
+    console.log("✅ Validation passed. Creating order with:");
+    console.log({ email, url, title, price, currency, name, address, city, zip, country });
+
+    const order = await prisma.order.create({
       data: {
-        telegram: validatedData.email,
-        title: validatedData.title,
-        price: validatedData.price,
-        url: validatedData.url,
-        currency: validatedData.currency,
+        email,
+        url,
+        title,
+        price,
+        currency,
+        name: name,
+        address: address,
+        city: city,
+        postcode: zip,
+        country: country,
+        payment: false,
       },
     });
 
-    if (!checkout?.id) {
-      throw new Error("Failed to create checkout");
+    if (!order?.id) {
+      console.error("❌ Failed to create order in database");
+      throw new Error("Order creation returned no ID");
     }
 
+    console.log("✅ Order created successfully:", order.id);
+
     return NextResponse.json(
-      { 
+      {
         status: "success",
-        redirectUrl: checkout.id 
-      }, 
+        redirectUrl: order.id,
+      },
       { status: 201 }
     );
-
   } catch (error) {
-    console.error("Error processing order:", error);
-    
-    if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { 
-          status: "error",
-          message: "Validation failed",
-          errors: error.flatten().fieldErrors 
-        }, 
-        { status: 400 }
-      );
-    }
-
+    console.error("❌ Server error:", error);
     return NextResponse.json(
-      { 
+      {
         status: "error",
-        message: "Internal server error" 
-      }, 
+        message: "Internal server error",
+      },
       { status: 500 }
     );
   }

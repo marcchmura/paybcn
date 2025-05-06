@@ -1,17 +1,15 @@
 'use client'
 import { useState } from "react";
 import { Dialog, DialogPanel, Transition } from "@headlessui/react";
-import { Menu, X } from "lucide-react";
-import ThemeSwitcher from "@/components/theme-switcher";
+import { Globe, Menu, X } from "lucide-react";
 import Logo from "@/components/logo";
 import Link from "next/link";
 import { Fragment } from "react";
+import { Button } from "./ui/button";
 
 const navigation = [
-  { name: "Reviews", href: "/testimonials" },
-  { name: "Whitepaper", href: "/whitepaper" },
-  { name: "FAQs", href: "/faq" },
-  { name: "Legal", href: "/terms" },
+  { name: "Home", href: "/" },
+  { name: "Terms of use", href: "https://fragrant-goal-701.notion.site/Terms-and-conditions-1ebb42f24926805098b1c5b3fffb8bb4?pvs=4" },
 ];
 
 export default function Example() {
@@ -19,7 +17,7 @@ export default function Example() {
 
   return (
     <header className="bg-background">
-      <nav aria-label="Global" className="mx-auto flex max-w-5xl items-center justify-between p-6 lg:px-8">
+      <nav aria-label="Global" className="mx-auto flex max-w-5xl items-center justify-between p-4 lg:px-8">
         <Link href={"/"} className="-m-1.5 p-1.5">
           <span className="sr-only">Paybcn</span>
           <Logo />
@@ -28,13 +26,13 @@ export default function Example() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-muted-foreground"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-foreground"
           >
             <span className="sr-only">Open main menu</span>
             <Menu aria-hidden="true" className="size-6" />
           </button>
         </div>
-        <div className="hidden lg:flex lg:gap-x-6">
+        <div className="hidden lg:flex lg:gap-x-6 font-medium items-center">
           {navigation.map((item) => (
             <a
               key={item.name}
@@ -98,7 +96,6 @@ export default function Example() {
                       </a>
                     ))}
                   </div>
-                  <ThemeSwitcher />
                 </div>
               </div>
             </DialogPanel>

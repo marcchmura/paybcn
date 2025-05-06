@@ -1,16 +1,16 @@
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
-model Checkout {
+model Order {
   id         String    @id @default(uuid())
-  telegram      String    @db.VarChar(255)
+  email      String    @db.VarChar(255)
   title      String    @db.VarChar(255)
   price      Float     
   url        String    @db.Text
@@ -18,29 +18,11 @@ model Checkout {
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
   status     Boolean   @default(false)
-  orders     Order[]
-}
-
-model Order {
-  id                String    @id @default(uuid())
-  variant           String    @db.VarChar(255)
-  telegram      String    @db.VarChar(255)
-  title      String    @db.VarChar(255)
-  price      Float     
-  url        String    @db.Text
-  currency   String    @db.Char(3)
-  shipping_name    String    @db.VarChar(255)
-  shipping_address String    @db.Text
-  shipping_postcode String    @db.VarChar(20)
-  shipping_city    String    @db.VarChar(100)
-  shipping_country String    @db.VarChar(100)
+  name    String    @db.VarChar(255)
+  address String    @db.Text
+  postcode String    @db.VarChar(20)
+  city    String    @db.VarChar(100)
+  country String    @db.VarChar(100)
   payment          Boolean   @default(false)
-  
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
-  checkoutId       String
-  checkout         Checkout  @relation(fields: [checkoutId], references: [id])
-
-  @@index([telegram])
-  @@index([checkoutId])
+  @@index([email])
 }
