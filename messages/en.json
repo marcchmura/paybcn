@@ -1,0 +1,24 @@
+{
+  "HomePage": {
+    "title": "Shop with Crypto as Easily as Cash.",
+    "body": "We place your orders for crypto.",
+    "sr": "Paybcn lets you create an order for a product, fill in your shipping details, and then acts as an intermediary to place the order for you, paying with your chosen cryptocurrency.",
+    "product-heading": "Product link",
+    "input-link": "Product link",
+    "contact-heading": "Contact information",
+    "input-email": "Email",
+    "details-heading": "Product details",
+    "input-title": "Product Name",
+    "input-price": "Price",
+    "input-currency": "Currency",
+    "shipping-heading": "Shipping",
+    "input-name": "Full Name",
+    "input-address": "Address",
+    "input-country": "Country",
+    "input-city": "City",
+    "input-postcode": "Postcode",
+    "united-states": "United-States",
+    "france": "France",
+    "button-shop": "Shop now"
+  }
+}

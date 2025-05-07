@@ -1,0 +1,25 @@
+{
+    "HomePage": {
+      "title": "Покупайте за крипту, как за нал.",
+      "body": "Мы оформляем заказы за вас за крипту.",
+      "sr": "Paybcn позволяет вам указать товар, ввести адрес доставки и оформить заказ — мы покупаем за вас, оплачивая выбранной криптовалютой.",
+      "product-heading": "Ссылка на товар",
+      "input-link": "Ссылка на товар",
+      "contact-heading": "Контактная информация",
+      "input-email": "Эл. почта",
+      "details-heading": "Информация о товаре",
+      "input-title": "Название товара",
+      "input-price": "Цена",
+      "input-currency": "Валюта",
+      "shipping-heading": "Доставка",
+      "input-name": "ФИО",
+      "input-address": "Адрес",
+      "input-country": "Страна",
+      "input-city": "Город",
+      "input-postcode": "Индекс",
+      "united-states": "США",
+      "france": "Франция",
+      "button-shop": "Купить сейчас"
+    }
+  }
+  

@@ -1,17 +1,20 @@
+// app/[locale]/page.tsx
+import { getTranslations } from "next-intl/server";
 import ProductForm from "@/components/forms/product-form";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function Example() {
+export default async function Page() {
+  const t = await getTranslations();
+
   return (
     <div className="relative flex flex-col md:flex-row md:space-x-12 items-start justify-center px-6 lg:px-8 py-12 md:max-w-5xl mx-auto space-y-8">
-      {/* Foreground content */}
       <div className="md:w-1/2 flex flex-col items-start justify-start space-y-12">
         <div className="relative z-10 mx-auto flex items-center space-y-10 md:space-y-12 flex-col">
-          <div className="flex flex-col items-start justify-start md:items-start space-y-8 lg:space-y-8">
-            <h3 className="text-5xl md:text-6xl tracking-tight text-pretty md:text-left">Shop with Crypto as Easily as Cash.</h3>
-            <p className="sm:text-lg md:text-xl text-muted-foreground text-center md:text-left">We place your orders for crypto.</p>
-            <p className="sr-only">Paybcn lets you create an order for a product, fill in your shipping details, and then acts as an intermediary to place the order for you, paying with your chosen cryptocurrency.</p>
+          <div className="flex flex-col items-start justify-start md:items-start space-y-8 lg:space-y-8 ">
+            <h3 className="text-5xl md:text-6xl tracking-tight text-pretty md:text-left break-words max-w-full">{t("HomePage.title")}</h3>
+            <p className="sm:text-lg md:text-xl text-muted-foreground text-center md:text-left">{t("HomePage.body")}</p>
+            <p className="sr-only">{t("HomePage.sr")}</p>
           </div>
           <div className=" space-x-4 items-start justify-start w-full hidden">
             <Link href={"https://www.tiktok.com/@marcchmura"}>

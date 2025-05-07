@@ -1,0 +1,24 @@
+{
+  "HomePage": {
+    "title": "Achetez en ligne en cryptos.",
+    "body": "Nous passons vos commandes.",
+    "sr": "Paybcn lets you create an order for a product, fill in your shipping details, and then acts as an intermediary to place the order for you, paying with your chosen cryptocurrency.",
+    "product-heading": "Produit",
+    "input-link": "Lien du produit",
+    "contact-heading": "Contact",
+    "input-email": "E-mail",
+    "details-heading": "Produit",
+    "input-title": "Nom du produit",
+    "input-price": "Prix du produit",
+    "input-currency": "Devise",
+    "shipping-heading": "Livraison",
+    "input-name": "Nom complet",
+    "input-address": "Adresse",
+    "input-country": "Pays",
+    "input-city": "Ville",
+    "input-postcode": "Code Postal",
+    "united-states": "États-Unis",
+    "france": "France",
+    "button-shop": "Commander"
+  }
+}

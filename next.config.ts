@@ -1,13 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: '/terms',
-        destination: '/terms-of-service.pdf', // Path to your PDF file
-      },
-    ];
-  },
-};
+import {NextConfig} from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
 
-module.exports = nextConfig;
+const withNextIntl = createNextIntlPlugin('./app/i18n/request.tsx');
+
+const config: NextConfig = {};
+
+export default withNextIntl(config);

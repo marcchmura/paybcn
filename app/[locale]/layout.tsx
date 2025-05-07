@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleTagManager } from "@next/third-parties/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from 'next-intl/server';
+
 
 const inter = Poppins({
   weight: "400",
@@ -27,24 +30,29 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" suppressHydrationWarning>
-      <GoogleTagManager gtmId="G-E1RXVN16GP" />
-      <body className={inter.className}>
-          <div className="min-h-screen flex justify-between flex-col">
-            <div className="flex flex-col">
-              <Header />
-              {children}
-            </div>
+  const locale = await getLocale();
+  const messages = await getMessages({ locale });
+ 
 
-            <Footer />
+  return (
+    <html lang={locale} suppressHydrationWarning>
+    <GoogleTagManager gtmId="G-E1RXVN16GP" />
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <body className={inter.className}>
+        <div className="min-h-screen flex justify-between flex-col">
+          <div className="flex flex-col">
+            <Header />
+            {children}
           </div>
+          <Footer />
+        </div>
       </body>
-    </html>
+    </NextIntlClientProvider>
+  </html>
   );
 }
