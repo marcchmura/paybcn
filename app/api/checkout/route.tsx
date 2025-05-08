@@ -7,12 +7,12 @@ const orderSchema = z.object({
   url: z.string().url().max(1000),
   title: z.string().min(3).max(400),
   price: z.coerce.number().positive(),
-  currency: z.enum(["USD", "EUR", "GBP", "SGD"]),
+  currency: z.enum(["USD", "EUR", "GBP", "SGD", "SEK", "PLN", "RUB", "CHF", "CNY", "BRL"]),
   name: z.string().min(2).max(255),
   address: z.string().min(5).max(1000),
   city: z.string().min(2).max(100),
   zip: z.string().min(2).max(20),
-  country: z.enum(["United States", "United Kingdom", "France", "Singapore"]),
+  country: z.string().min(2).max(30),
 });
 
 export async function POST(request: Request) {

@@ -20,5 +20,23 @@
     "united-states": "United-States",
     "france": "France",
     "button-shop": "Shop now"
+  },
+  "Checkout": {
+    "title": "Order Summary",
+    "contact-heading":"Contact",
+    "amount-due":"Amount due",
+    "subtotal":"Subtotal",
+    "transaction-fee":"Transaction Fee",
+    "total":"Total",
+    "button-payment":"Proceed to payment",
+    "disclaimer":"By continuing, you acknowledge that all purchases are final—no returns or refunds are accepted. You understand that you are not buying directly from this store, and authorize Paybcn to place the associated order on your behalf."
+  },
+  "Header": {
+    "Home":"Home",
+    "Terms":"Terms",
+    "lang":"Language"
+  },
+  "Footer": {
+    "rights":"All Rights Reserved"
   }
 }

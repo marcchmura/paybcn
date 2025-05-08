@@ -1,0 +1,43 @@
+{
+    "HomePage": {
+      "title": "Kupuj za krypto tak łatwo jak za gotówkę.",
+      "body": "Składamy zamówienia za Ciebie i płacimy kryptowalutą.",
+      "sr": "Paybcn umożliwia Ci złożenie zamówienia na produkt, wpisanie danych dostawy, a następnie realizuje zakup w Twoim imieniu, płacąc wybraną kryptowalutą.",
+      "product-heading": "Link do produktu",
+      "input-link": "Link do produktu",
+      "contact-heading": "Informacje kontaktowe",
+      "input-email": "E-mail",
+      "details-heading": "Szczegóły produktu",
+      "input-title": "Nazwa produktu",
+      "input-price": "Cena",
+      "input-currency": "Waluta",
+      "shipping-heading": "Dostawa",
+      "input-name": "Imię i nazwisko",
+      "input-address": "Adres",
+      "input-country": "Kraj",
+      "input-city": "Miasto",
+      "input-postcode": "Kod pocztowy",
+      "united-states": "Stany Zjednoczone",
+      "france": "Francja",
+      "button-shop": "Kup teraz"
+    },
+    "Checkout": {
+      "title": "Podsumowanie zamówienia",
+      "contact-heading": "Kontakt",
+      "amount-due": "Do zapłaty",
+      "subtotal": "Suma częściowa",
+      "transaction-fee": "Opłata transakcyjna",
+      "total": "Razem",
+      "button-payment": "Przejdź do płatności",
+      "disclaimer": "Kontynuując, potwierdzasz, że wszystkie zakupy są ostateczne — brak zwrotów i refundacji. Rozumiesz, że nie kupujesz bezpośrednio w sklepie i upoważniasz Paybcn do złożenia zamówienia w Twoim imieniu."
+    },
+    "Header": {
+      "Home": "Strona główna",
+      "Terms": "Warunki",
+      "lang":"Język"
+    },
+    "Footer": {
+      "rights": "Wszelkie prawa zastrzeżone"
+    }
+  }
+  

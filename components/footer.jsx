@@ -1,4 +1,4 @@
-
+import { useTranslations } from "next-intl";
 
 const navigation = [
   {
@@ -22,6 +22,7 @@ const navigation = [
 ];
 
 export default function Example() {
+  const t = useTranslations("Footer");
   return (
     <footer className="bg-background">
       <div className="mx-auto max-w-5xl px-6 py-12 flex items-center justify-between lg:px-8">
@@ -33,7 +34,7 @@ export default function Example() {
             </a>
           ))}
         </div>
-        <p className="text-center text-xs text-muted-foreground md:order-1">All rights reserved &copy; Paybcn 2025</p>
+        <p className="text-center text-xs text-muted-foreground md:order-1">{t("rights")} &copy; Paybcn 2025</p>
       </div>
     </footer>
   );

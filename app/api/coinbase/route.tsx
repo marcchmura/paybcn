@@ -2,7 +2,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import crypto from "crypto";
 import { prisma } from "@/lib/db";
-import { sendTelegramNotification } from "@/lib/telegram";
 
 const SHARED_SECRET = process.env.x_cc_webhook_signature;
 
@@ -38,7 +37,6 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      await sendTelegramNotification(order);
       console.log("Telegram notification sent successfully!");
     } catch (error) {
       console.error("Failed to send Telegram notification:", error);

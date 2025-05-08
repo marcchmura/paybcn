@@ -1,0 +1,43 @@
+{
+    "HomePage": {
+      "title": "Compre com cripto como se fosse dinheiro.",
+      "body": "Fazemos o pedido por si e pagamos com cripto.",
+      "sr": "A Paybcn permite-lhe criar um pedido para um produto, inserir os seus dados de envio e nós fazemos a compra por si, pagando com a criptomoeda escolhida.",
+      "product-heading": "Link do produto",
+      "input-link": "Link do produto",
+      "contact-heading": "Informações de contacto",
+      "input-email": "Email",
+      "details-heading": "Detalhes do produto",
+      "input-title": "Nome do produto",
+      "input-price": "Preço",
+      "input-currency": "Moeda",
+      "shipping-heading": "Envio",
+      "input-name": "Nome completo",
+      "input-address": "Morada",
+      "input-country": "País",
+      "input-city": "Cidade",
+      "input-postcode": "Código postal",
+      "united-states": "Estados Unidos",
+      "france": "França",
+      "button-shop": "Comprar agora"
+    },
+    "Checkout": {
+      "title": "Resumo da encomenda",
+      "contact-heading": "Contacto",
+      "amount-due": "Valor a pagar",
+      "subtotal": "Subtotal",
+      "transaction-fee": "Taxa de transação",
+      "total": "Total",
+      "button-payment": "Proceder ao pagamento",
+      "disclaimer": "Ao continuar, confirma que todas as compras são finais — não há devoluções nem reembolsos. Compreende que não está a comprar diretamente à loja e autoriza a Paybcn a fazer a encomenda em seu nome."
+    },
+    "Header": {
+      "Home": "Início",
+      "Terms": "Termos",
+      "lang":"Idioma"
+    },
+    "Footer": {
+      "rights": "Todos os direitos reservados"
+    }
+  }
+  

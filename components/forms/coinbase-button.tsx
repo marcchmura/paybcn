@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
+import {useTranslations} from 'next-intl';
 
 interface CoinbaseButtonProps {
   orderId: string;
@@ -10,7 +11,7 @@ interface CoinbaseButtonProps {
 
 const CoinbaseButton: React.FC<CoinbaseButtonProps> = ({ orderId }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const t = useTranslations('Checkout');
   const handlePayment = async () => {
     if (isSubmitting) return;
 
@@ -47,11 +48,11 @@ const CoinbaseButton: React.FC<CoinbaseButtonProps> = ({ orderId }) => {
 
   return (
     <Button
-      className="w-full md:w-48 h-12 rounded-full"
+      className="w-full md:w-48 h-[56px] rounded-full"
       onClick={handlePayment}
       disabled={isSubmitting}
     >
-      {isSubmitting ? <Loader2 className="animate-spin pointer-events-none h-5 w-5 text-muted-foreground" /> : "Proceed to payment"}
+      {isSubmitting ? <Loader2 className="animate-spin pointer-events-none h-5 w-5 text-muted-foreground" /> : t('button-payment')}
     </Button>
   );
 };

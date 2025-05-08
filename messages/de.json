@@ -1,0 +1,43 @@
+{
+    "HomePage": {
+      "title": "Kaufe mit Krypto so einfach wie mit Bargeld.",
+      "body": "Wir bestellen für dich und zahlen mit Krypto.",
+      "sr": "Paybcn ermöglicht es dir, ein Produkt auszuwählen, deine Lieferadresse einzugeben und die Bestellung aufzugeben – wir kaufen für dich ein und zahlen mit deiner gewählten Kryptowährung.",
+      "product-heading": "Produktlink",
+      "input-link": "Produktlink",
+      "contact-heading": "Kontaktinformationen",
+      "input-email": "E-Mail",
+      "details-heading": "Produktdetails",
+      "input-title": "Produktname",
+      "input-price": "Preis",
+      "input-currency": "Währung",
+      "shipping-heading": "Lieferung",
+      "input-name": "Vollständiger Name",
+      "input-address": "Adresse",
+      "input-country": "Land",
+      "input-city": "Stadt",
+      "input-postcode": "Postleitzahl",
+      "united-states": "USA",
+      "france": "Frankreich",
+      "button-shop": "Jetzt kaufen"
+    },
+    "Checkout": {
+      "title": "Bestellübersicht",
+      "contact-heading": "Kontakt",
+      "amount-due": "Fälliger Betrag",
+      "subtotal": "Zwischensumme",
+      "transaction-fee": "Transaktionsgebühr",
+      "total": "Gesamtsumme",
+      "button-payment": "Zur Zahlung",
+      "disclaimer": "Indem du fortfährst, bestätigst du, dass alle Käufe endgültig sind – Rückgaben oder Erstattungen sind ausgeschlossen. Du verstehst, dass du nicht direkt im Shop einkaufst, und autorisierst Paybcn, die Bestellung in deinem Namen aufzugeben."
+    },
+    "Header": {
+      "Home": "Startseite",
+      "Terms": "AGB",
+      "lang":"Language"
+    },
+    "Footer": {
+      "rights": "Alle Rechte vorbehalten"
+    }
+  }
+  

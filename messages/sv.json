@@ -1,0 +1,43 @@
+{
+    "HomePage": {
+      "title": "Handla med krypto lika enkelt som med kontanter.",
+      "body": "Vi gör dina beställningar med krypto.",
+      "sr": "Paybcn låter dig skapa en beställning, fylla i dina leveransuppgifter och agerar sedan som mellanhand för att genomföra köpet åt dig med vald kryptovaluta.",
+      "product-heading": "Produktlänk",
+      "input-link": "Produktlänk",
+      "contact-heading": "Kontaktinformation",
+      "input-email": "E-post",
+      "details-heading": "Produktinformation",
+      "input-title": "Produktnamn",
+      "input-price": "Pris",
+      "input-currency": "Valuta",
+      "shipping-heading": "Leverans",
+      "input-name": "Fullständigt namn",
+      "input-address": "Adress",
+      "input-country": "Land",
+      "input-city": "Stad",
+      "input-postcode": "Postnummer",
+      "united-states": "USA",
+      "france": "Frankrike",
+      "button-shop": "Handla nu"
+    },
+    "Checkout": {
+      "title": "Orderöversikt",
+      "contact-heading": "Kontakt",
+      "amount-due": "Att betala",
+      "subtotal": "Delsumma",
+      "transaction-fee": "Transaktionsavgift",
+      "total": "Totalt",
+      "button-payment": "Fortsätt till betalning",
+      "disclaimer": "Genom att fortsätta bekräftar du att alla köp är slutgiltiga – inga returer eller återbetalningar accepteras. Du förstår att du inte köper direkt från butiken, och godkänner att Paybcn gör beställningen åt dig."
+    },
+    "Header": {
+      "Home": "Hem",
+      "Terms": "Villkor",
+      "lang": "Språk"
+    },
+    "Footer": {
+      "rights": "Alla rättigheter förbehållna"
+    }
+  }
+  

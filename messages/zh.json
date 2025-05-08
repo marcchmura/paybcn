@@ -1,0 +1,43 @@
+{
+    "HomePage": {
+      "title": "用加密货币购物就像用现金一样简单。",
+      "body": "我们代您下单并用加密货币付款。",
+      "sr": "Paybcn 允许您提交商品链接、填写配送信息，然后我们代您下单并用您选择的加密货币付款。",
+      "product-heading": "商品链接",
+      "input-link": "商品链接",
+      "contact-heading": "联系方式",
+      "input-email": "电子邮箱",
+      "details-heading": "商品详情",
+      "input-title": "商品名称",
+      "input-price": "价格",
+      "input-currency": "币种",
+      "shipping-heading": "配送信息",
+      "input-name": "全名",
+      "input-address": "地址",
+      "input-country": "国家",
+      "input-city": "城市",
+      "input-postcode": "邮政编码",
+      "united-states": "美国",
+      "france": "法国",
+      "button-shop": "立即购买"
+    },
+    "Checkout": {
+      "title": "订单摘要",
+      "contact-heading": "联系方式",
+      "amount-due": "应付金额",
+      "subtotal": "小计",
+      "transaction-fee": "交易手续费",
+      "total": "总计",
+      "button-payment": "继续付款",
+      "disclaimer": "继续操作即表示您理解并同意所有订单一经提交即为最终订单，无法退货或退款。您明白此交易不是直接在商店进行，并授权 Paybcn 代表您下单。"
+    },
+    "Header": {
+      "Home": "首页",
+      "Terms": "条款",
+      "lang": "语言"
+    },
+    "Footer": {
+      "rights": "版权所有"
+    }
+  }
+  

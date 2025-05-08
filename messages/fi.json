@@ -1,0 +1,43 @@
+{
+    "HomePage": {
+      "title": "Osta kryptolla yhtä helposti kuin käteisellä.",
+      "body": "Me teemme tilauksesi kryptolla.",
+      "sr": "Paybcn antaa sinun luoda tuotetilauksen, täyttää toimitustiedot ja toimii välittäjänä, joka tekee tilauksen puolestasi valitsemallasi kryptovaluutalla.",
+      "product-heading": "Tuotelinkki",
+      "input-link": "Tuotelinkki",
+      "contact-heading": "Yhteystiedot",
+      "input-email": "Sähköposti",
+      "details-heading": "Tuotetiedot",
+      "input-title": "Tuotenimi",
+      "input-price": "Hinta",
+      "input-currency": "Valuutta",
+      "shipping-heading": "Toimitus",
+      "input-name": "Koko nimi",
+      "input-address": "Osoite",
+      "input-country": "Maa",
+      "input-city": "Kaupunki",
+      "input-postcode": "Postinumero",
+      "united-states": "Yhdysvallat",
+      "france": "Ranska",
+      "button-shop": "Osta nyt"
+    },
+    "Checkout": {
+      "title": "Tilausyhteenveto",
+      "contact-heading": "Yhteystiedot",
+      "amount-due": "Maksettava summa",
+      "subtotal": "Välisumma",
+      "transaction-fee": "Käsittelymaksu",
+      "total": "Yhteensä",
+      "button-payment": "Siirry maksamaan",
+      "disclaimer": "Jatkamalla vahvistat, että kaikki ostokset ovat lopullisia — palautuksia tai hyvityksiä ei hyväksytä. Ymmärrät, ettet osta suoraan tältä sivustolta, ja valtuutat Paybcn:n tekemään tilauksen puolestasi."
+    },
+    "Header": {
+      "Home": "Etusivu",
+      "Terms": "Ehdot",
+      "lang": "Kieli"
+    },
+    "Footer": {
+      "rights": "Kaikki oikeudet pidätetään"
+    }
+  }
+  

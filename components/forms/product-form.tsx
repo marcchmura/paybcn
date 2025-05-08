@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Link, Loader2 } from "lucide-react";
 import { Turnstile } from "@marsidev/react-turnstile";
-import {useTranslations} from 'next-intl';
+import { useTranslations } from "next-intl";
 
 type FormData = {
   email: string;
@@ -32,7 +32,7 @@ export default function ProductForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
-  const t = useTranslations('HomePage');
+  const t = useTranslations("HomePage");
   const [formData, setFormData] = useState<FormData>({
     email: "",
     price: "",
@@ -145,7 +145,6 @@ export default function ProductForm() {
       handleSearch();
     }
   }, [query, handleSearch]);
-  
 
   return (
     <form onSubmit={handleSubmit} className="w-full space-y-8">
@@ -153,13 +152,13 @@ export default function ProductForm() {
         {errors.form && <div className="text-red-500 text-sm">{errors.form}</div>}
         <div className="flex flex-col space-y-3 rounded-xl">
           <div className="flex flex-col md:space-y-1">
-            <h2 className="text-sm/6 font-medium text-foreground hidden md:block">{t('product-heading')}</h2>
+            <h2 className="text-sm/6 font-medium text-foreground hidden md:block">{t("product-heading")}</h2>
             <div className="relative">
               {loading ? <Loader2 className="animate-spin absolute top-5 right-4 h-4 w-4 text-muted-foreground" /> : <Link className="absolute top-5 right-4 h-4 w-4 text-muted-foreground" />}
               <Input
                 name="url"
                 type="url"
-                placeholder={t('input-link')}
+                placeholder={t("input-link")}
                 value={formData.url}
                 onChange={(e) => {
                   handleChange(e);
@@ -173,18 +172,18 @@ export default function ProductForm() {
 
           <div className="flex flex-col md:space-y-1">
             <h2 className="text-sm/6 font-medium text-foreground hidden md:block">{t("contact-heading")}</h2>
-            <Input name="email" type="email" placeholder={t('input-email')} value={formData.email} onChange={handleChange} required />
+            <Input name="email" type="email" placeholder={t("input-email")} value={formData.email} onChange={handleChange} required />
           </div>
           <div className="flex flex-col md:space-y-1">
             <h2 className="text-sm/6 font-medium text-foreground hidden md:block">{t("details-heading")}</h2>
             <div className="flex flex-col space-y-3">
-              <Input name="title" type="text" placeholder={t('input-title')} value={formData.title} onChange={handleChange} required />
+              <Input name="title" type="text" placeholder={t("input-title")} value={formData.title} onChange={handleChange} required />
               <div className="flex space-x-2">
-                <Input name="price" type="number" placeholder={t('input-price')} value={formData.price} onChange={handleChange} required />
+                <Input name="price" type="number" placeholder={t("input-price")} value={formData.price} onChange={handleChange} required />
 
                 <Select value={formData.currency} onValueChange={handleCurrencyChange}>
                   <SelectTrigger>
-                    <SelectValue placeholder={t('input-currency')} />
+                    <SelectValue placeholder={t("input-currency")} />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -192,6 +191,12 @@ export default function ProductForm() {
                       <SelectItem value="EUR">EUR</SelectItem>
                       <SelectItem value="GBP">GBP</SelectItem>
                       <SelectItem value="SGD">SGD</SelectItem>
+                      <SelectItem value="SEK">SEK</SelectItem>
+                      <SelectItem value="PLN">PLN</SelectItem>
+                      <SelectItem value="RUB">RUB</SelectItem>
+                      <SelectItem value="CHF">CHF</SelectItem>
+                      <SelectItem value="CNY">CNY</SelectItem>
+                      <SelectItem value="BRL">BRL</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
@@ -201,21 +206,35 @@ export default function ProductForm() {
           <div className="flex flex-col md:space-y-1">
             <h2 className="text-sm/6 font-medium text-foreground hidden md:block">{t("shipping-heading")}</h2>
             <div className="flex flex-col space-y-3">
-              <Input name="name" type="text" placeholder={t('input-name')} value={formData.name} onChange={handleChange} required />
-              <Input name="address" type="text" placeholder={t('input-address')} value={formData.address} onChange={handleChange} required />
+              <Input name="name" type="text" placeholder={t("input-name")} value={formData.name} onChange={handleChange} required />
+              <Input name="address" type="text" placeholder={t("input-address")} value={formData.address} onChange={handleChange} required />
               <div className="flex space-x-2">
-                <Input name="city" type="text" placeholder={t('input-city')} value={formData.city} onChange={handleChange} required />
-                <Input name="zip" type="text" placeholder={t('input-postcode')} value={formData.zip} onChange={handleChange} required />
+                <Input name="city" type="text" placeholder={t("input-city")} value={formData.city} onChange={handleChange} required />
+                <Input name="zip" type="text" placeholder={t("input-postcode")} value={formData.zip} onChange={handleChange} required />
               </div>
               <div className="w-full">
                 <Select value={formData.country} onValueChange={handleCountryChange}>
                   <SelectTrigger>
-                    <SelectValue placeholder={t('input-country')} />
+                    <SelectValue placeholder={t("input-country")} />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
-                      <SelectItem value="United States">{t('united-states')}</SelectItem>
-                      <SelectItem value="France">{t('france')}</SelectItem>
+                      <SelectItem value="United States">United States</SelectItem>
+                      <SelectItem value="United Kingdom">United Kingdom</SelectItem>
+                      <SelectItem value="United Arab Emirates">United Arab Emirates</SelectItem>
+                      <SelectItem value="France">France</SelectItem>
+                      <SelectItem value="Belgium">Belgium</SelectItem>
+                      <SelectItem value="Switzerland">Switzerland</SelectItem>
+                      <SelectItem value="Sweden">Sweden</SelectItem>
+                      <SelectItem value="Finland">Finland</SelectItem>
+                      <SelectItem value="Poland">Poland</SelectItem>
+                      <SelectItem value="Germany">Germany</SelectItem>
+                      <SelectItem value="Spain">Spain</SelectItem>
+                      <SelectItem value="Portugal">Portugal</SelectItem>
+                      <SelectItem value="Netherlands">Netherlands</SelectItem>
+                      <SelectItem value="Russia">Russia</SelectItem>
+                      <SelectItem value="China">China</SelectItem>
+                      <SelectItem value="Singapore">Singapore</SelectItem>
                     </SelectGroup>
                   </SelectContent>
                 </Select>
@@ -232,8 +251,8 @@ export default function ProductForm() {
           />
         </div>
 
-        <Button type="submit" className="w-full md:w-32 h-12 rounded-full font-medium tracking-tight text-base" disabled={isSubmitting}>
-          {isSubmitting ? <Loader2 className="animate-spin h-5 w-5" /> : t('button-shop')}
+        <Button type="submit" className="w-full md:w-32 h-[56px] rounded-full font-medium tracking-tight text-base" disabled={isSubmitting}>
+          {isSubmitting ? <Loader2 className="animate-spin h-5 w-5" /> : t("button-shop")}
         </Button>
       </div>
     </form>

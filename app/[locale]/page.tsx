@@ -13,7 +13,7 @@ export default async function Page() {
         <div className="relative z-10 mx-auto flex items-center space-y-10 md:space-y-12 flex-col">
           <div className="flex flex-col items-start justify-start md:items-start space-y-8 lg:space-y-8 ">
             <h3 className="text-5xl md:text-6xl tracking-tight text-pretty md:text-left break-words max-w-full">{t("HomePage.title")}</h3>
-            <p className="sm:text-lg md:text-xl text-muted-foreground text-center md:text-left">{t("HomePage.body")}</p>
+            <p className="sm:text-lg md:text-xl text-muted-foreground text-left">{t("HomePage.body")}</p>
             <p className="sr-only">{t("HomePage.sr")}</p>
           </div>
           <div className=" space-x-4 items-start justify-start w-full hidden">
@@ -31,9 +31,6 @@ export default async function Page() {
                 </svg>
               </Button>
             </Link>
-          </div>
-          <div className="relative w-full h-64 hidden md:block">
-            <img src="/icon.svg" alt="Paybcn Logo Background" className="absolute inset-0  top-8 h-48 w-48 opacity-100 z-0 pointer-events-none" />
           </div>
         </div>
       </div>

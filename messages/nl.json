@@ -1,0 +1,43 @@
+{
+    "HomePage": {
+      "title": "Koop met crypto net zo makkelijk als contant.",
+      "body": "Wij plaatsen je bestelling en betalen met crypto.",
+      "sr": "Paybcn laat je een product kiezen, verzendgegevens invullen, en wij doen de aankoop namens jou met de gekozen cryptomunt.",
+      "product-heading": "Productlink",
+      "input-link": "Productlink",
+      "contact-heading": "Contactgegevens",
+      "input-email": "E-mailadres",
+      "details-heading": "Productdetails",
+      "input-title": "Productnaam",
+      "input-price": "Prijs",
+      "input-currency": "Valuta",
+      "shipping-heading": "Verzending",
+      "input-name": "Volledige naam",
+      "input-address": "Adres",
+      "input-country": "Land",
+      "input-city": "Stad",
+      "input-postcode": "Postcode",
+      "united-states": "Verenigde Staten",
+      "france": "Frankrijk",
+      "button-shop": "Nu kopen"
+    },
+    "Checkout": {
+      "title": "Besteloverzicht",
+      "contact-heading": "Contact",
+      "amount-due": "Te betalen bedrag",
+      "subtotal": "Subtotaal",
+      "transaction-fee": "Transactiekosten",
+      "total": "Totaal",
+      "button-payment": "Ga naar betaling",
+      "disclaimer": "Door verder te gaan bevestig je dat alle aankopen definitief zijn — geen retouren of terugbetalingen. Je begrijpt dat je niet rechtstreeks bij de winkel koopt en machtigt Paybcn om de bestelling namens jou te plaatsen."
+    },
+    "Header": {
+      "Home": "Startpagina",
+      "Terms": "Voorwaarden",
+      "lang":"Taal"
+    },
+    "Footer": {
+      "rights": "Alle rechten voorbehouden"
+    }
+  }
+  

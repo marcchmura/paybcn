@@ -1,8 +1,8 @@
 {
   "HomePage": {
     "title": "Achetez en ligne en cryptos.",
-    "body": "Nous passons vos commandes.",
-    "sr": "Paybcn lets you create an order for a product, fill in your shipping details, and then acts as an intermediary to place the order for you, paying with your chosen cryptocurrency.",
+    "body": "Nous passons vos commandes sur des milliers de boutiques.",
+    "sr": "Paybcn vous permet de créer une commande pour un produit, de renseigner vos informations de livraison, puis agit en tant qu'intermédiaire pour passer la commande et payer en crypto-monnaie.",
     "product-heading": "Produit",
     "input-link": "Lien du produit",
     "contact-heading": "Contact",
@@ -16,9 +16,28 @@
     "input-address": "Adresse",
     "input-country": "Pays",
     "input-city": "Ville",
-    "input-postcode": "Code Postal",
+    "input-postcode": "Code postal",
     "united-states": "États-Unis",
     "france": "France",
     "button-shop": "Commander"
+
+  },
+  "Checkout": {
+    "title": "Récapitulatif de commande",
+    "contact-heading": "Contact",
+    "amount-due": "Montant dû",
+    "subtotal": "Sous-total",
+    "transaction-fee": "Frais de transaction",
+    "total": "Total",
+    "button-payment": "Procéder au paiement",
+    "disclaimer": "En continuant, vous reconnaissez que tous les achats sont définitifs — aucun retour ni remboursement n’est accepté. Vous comprenez que vous n’achetez pas directement sur cette boutique et autorisez Paybcn à passer la commande en votre nom."
+  },
+  "Header": {
+    "Home": "Page Principale",
+    "Terms": "Conditions d'utilisation",
+    "lang":"Langue"
+  },
+  "Footer": {
+    "rights": "Tous droits réservés"
   }
 }
